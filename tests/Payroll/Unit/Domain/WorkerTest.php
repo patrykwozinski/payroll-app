@@ -7,6 +7,9 @@ namespace App\Tests\Payroll\Unit\Domain;
 use App\Payroll\Domain\Event\WorkerHired;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\WorkerId;
+use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
+use App\Tests\Payroll\ObjectMother\Domain\SalaryMother;
+use App\Tests\Payroll\ObjectMother\Domain\SeniorityMother;
 use PHPUnit\Framework\TestCase;
 
 final class WorkerTest extends TestCase
@@ -17,9 +20,12 @@ final class WorkerTest extends TestCase
         $id = WorkerId::random();
         $firstName = 'Kevin';
         $lastName = 'Mitnick';
+        $department = DepartmentMother::random();
+        $seniority = SeniorityMother::random();
+        $salary = SalaryMother::random();
 
         // Act
-        $worker = Worker::hire($id, $firstName, $lastName);
+        $worker = Worker::hire($id, $firstName, $lastName, $department, $seniority, $salary);
 
         // Assert
         $recordedEvent = $worker->pullEvents()[0];
