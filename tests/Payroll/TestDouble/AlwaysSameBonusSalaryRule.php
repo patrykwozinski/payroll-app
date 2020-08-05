@@ -6,7 +6,7 @@ namespace App\Tests\Payroll\TestDouble;
 
 use App\Payroll\Domain\BonusSalary;
 use App\Payroll\Domain\Department;
-use App\Payroll\Domain\Policy\BonusSalaryRule;
+use App\Payroll\Domain\BonusSalaryRule;
 use App\Payroll\Domain\Seniority;
 
 final class AlwaysSameBonusSalaryRule implements BonusSalaryRule

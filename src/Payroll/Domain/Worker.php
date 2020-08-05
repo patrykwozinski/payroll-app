@@ -7,7 +7,6 @@ namespace App\Payroll\Domain;
 use App\Common\Domain\AggregateRoot;
 use App\Payroll\Domain\Event\BonusSalaryRecalculated;
 use App\Payroll\Domain\Event\WorkerHired;
-use App\Payroll\Domain\Policy\BonusSalaryRule;
 
 final class Worker extends AggregateRoot
 {
