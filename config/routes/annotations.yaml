@@ -1,5 +1,5 @@
 controllers:
-    resource: ../../src/UserInterface/Http/Web/
+    resource: ../../src/Payroll/UserInterface/Http/Web/
     type: annotation
 
 kernel:
