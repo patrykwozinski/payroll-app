@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Payroll\Unit\Infrastructure\Messenger;
+namespace App\Tests\Common\Unit\Infrastructure\Messenger;
 
 use App\Common\Application\Command;
 use App\Common\Infrastructure\Messenger\MessengerCommandBus;
