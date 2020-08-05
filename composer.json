@@ -12,6 +12,10 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpstan/phpstan": "^0.12.36",
+        "sensiolabs-de/deptrac-shim": "^0.8.2",
+        "symfony/phpunit-bridge": "^5.1"
     },
     "config": {
         "optimize-autoloader": true,
@@ -49,6 +53,23 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "quality:cs:dry": [
+            "./vendor/bin/php-cs-fixer --no-interaction --diff --dry-run -v fix"
+        ],
+        "quality:cs:fix": [
+            "./vendor/bin/php-cs-fixer --no-interaction --diff -v fix"
+        ],
+        "quality:phpstan": [
+            "./vendor/bin/phpstan analyse"
+        ],
+        "quality:architecture": [
+            "./vendor/bin/deptrac"
+        ],
+        "quality:check": [
+            "@quality:cs:dry",
+            "@quality:phpstan",
+            "@quality:architecture"
         ]
     },
     "conflict": {

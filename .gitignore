@@ -1,3 +1,8 @@
+.idea
+.deptrac.cache
+/bin/*
+!/bin/console
+!/bin/phpunit
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -8,3 +13,18 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> sensiolabs-de/deptrac-shim ###
+/.deptrac.cache
+###< sensiolabs-de/deptrac-shim ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
