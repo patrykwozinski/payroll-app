@@ -3,27 +3,56 @@ paths:
 exclude_files:
     - .*test.*
 layers:
-    -
-        name: Controller
+    -   name: common_application
         collectors:
-            -
-                type: className
-                regex: .*Controller.*
-    -
-        name: Repository
+            -   type: directory
+                regex: src/Common/Application
+    -   name: common_domain
         collectors:
-            -
-                type: className
-                regex: .*Repository.*
-    -
-        name: Service
+            -   type: directory
+                regex: src/Common/Domain
+    -   name: common_infrastructure
         collectors:
-            -
-                type: className
-                regex: .*Service.*
+            -   type: directory
+                regex: src/Common/Infrastructure
+
+    -   name: payroll_application
+        collectors:
+            -   type: directory
+                regex: src/Payroll/Application
+    -   name: payroll_domain
+        collectors:
+            -   type: directory
+                regex: src/Payroll/Domain
+    -   name: payroll_infrastructure
+        collectors:
+            -   type: directory
+                regex: src/Payroll/Infrastructure
+    -   name: payroll_user_interface
+        collectors:
+            -   type: directory
+                regex: src/Payroll/UserInterface
+
 ruleset:
-    Controller:
-        - Service
-    Service:
-        - Repository
-    Repository:
+    common_infrastructure:
+        - common_application
+        - common_domain
+    common_application:
+        - common_domain
+    common_domain: ~
+
+    payroll_user_interface:
+        - common_application
+        - payroll_application
+    payroll_infrastructure:
+        - common_infrastructure
+        - common_application
+        - common_domain
+        - payroll_application
+        - payroll_domain
+    payroll_application:
+        - common_application
+        - common_domain
+        - payroll_domain
+    payroll_domain:
+      - common_domain
