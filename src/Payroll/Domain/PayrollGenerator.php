@@ -20,10 +20,9 @@ final class PayrollGenerator
 
     public function generate(PayrollId $payrollId, Date $date): Payroll
     {
-        $workers = $this->workers->all();
         $payroll = Payroll::generate($payrollId, $date);
 
-        foreach ($workers as $worker) {
+        foreach ($this->workers->all() as $worker) {
             $salaryBonus = $worker->salaryBonus(...$this->bonusCalculators);
 
             $payroll->add(
