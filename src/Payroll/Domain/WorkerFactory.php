@@ -25,7 +25,7 @@ final class WorkerFactory
             $workerId,
             new PersonalData($firstName, $lastName),
             $department,
-            new Salary($salary),
+            new Money($salary),
             $this->clock->now()
         );
     }

@@ -7,4 +7,7 @@ namespace App\Payroll\Domain;
 interface Workers
 {
     public function add(Worker $worker): void;
+
+    /** @return Worker[] */
+    public function all(): array;
 }

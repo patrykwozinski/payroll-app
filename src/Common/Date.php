@@ -14,4 +14,9 @@ final class Date
     {
         $this->dateTime = $dateTime;
     }
+
+    public function diffInYears(Date $hiredAt): int
+    {
+        return $this->dateTime->diff($hiredAt->dateTime)->y;
+    }
 }

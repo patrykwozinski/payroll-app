@@ -16,4 +16,14 @@ final class DepartmentMother
     {
         return new Department(DepartmentId::fromString(self::ID), 'HR', BonusType::yearly(10));
     }
+
+    public static function withPercentageBonus(int $amount): Department
+    {
+        return new Department(DepartmentId::fromString(self::ID), 'HR', BonusType::percentage($amount));
+    }
+
+    public static function withYearlyBonus(int $amount): Department
+    {
+        return new Department(DepartmentId::fromString(self::ID), 'HR', BonusType::yearly($amount));
+    }
 }
