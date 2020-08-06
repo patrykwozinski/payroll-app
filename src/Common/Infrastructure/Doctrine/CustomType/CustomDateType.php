@@ -23,7 +23,7 @@ final class CustomDateType extends DateType
     /** @param Date $value */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
-        return (string)$value;
+        return (string) $value;
     }
 
     public function getName(): string

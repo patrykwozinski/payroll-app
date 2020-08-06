@@ -13,6 +13,10 @@
                 type="worker_id">
             <generator strategy="NONE"/>
         </id>
+        <embedded
+                name="personalData"
+                class="App\Payroll\Domain\PersonalData"
+        />
         <field
                 name="salary"
                 column="salary"
