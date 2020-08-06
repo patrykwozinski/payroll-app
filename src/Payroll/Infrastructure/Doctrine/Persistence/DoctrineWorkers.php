@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Infrastructure\Doctrine\Persistence;
 
+use App\Common\Date;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\Workers;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,7 +24,7 @@ final class DoctrineWorkers implements Workers
         $this->entityManager->flush();
     }
 
-    public function all(): array
+    public function workingUntil(Date $date): array
     {
         return [];
     }

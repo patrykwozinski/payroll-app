@@ -17,7 +17,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class GeneratePayrollCliCommand extends Command
 {
-    protected static $defaultName = 'payroll:generate-payroll';
+    protected static $defaultName = 'payroll:generate';
 
     private Bus $commandBus;
 

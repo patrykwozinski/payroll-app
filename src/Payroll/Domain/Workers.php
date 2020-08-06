@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
+use App\Common\Date;
+
 interface Workers
 {
     public function add(Worker $worker): void;
 
     /** @return Worker[] */
-    public function all(): array;
+    public function workingUntil(Date $date): array;
 }
