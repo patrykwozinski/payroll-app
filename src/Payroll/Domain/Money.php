@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
-use Webmozart\Assert\Assert;
+use Assert\Assertion;
 
 final class Money
 {
@@ -13,7 +13,7 @@ final class Money
     // I don't want to work on `FLOAT` for money but at this time it's ok. In the future I'd like to replace it with money-lib
     public function __construct(float $money)
     {
-        Assert::greaterThanEq($money, 'Salary can not be less than zero');
+        Assertion::greaterOrEqualThan($money, 'Salary can not be less than zero');
 
         $this->money = $money;
     }
