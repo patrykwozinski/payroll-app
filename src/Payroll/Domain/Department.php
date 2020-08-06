@@ -17,6 +17,16 @@ final class Department
         $this->bonusType = $bonusType;
     }
 
+    public function id(): DepartmentId
+    {
+        return $this->id;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
     public function bonusType(): BonusType
     {
         return $this->bonusType;

@@ -10,4 +10,8 @@ interface Departments
 {
     /** @throws DepartmentNotFound */
     public function oneById(DepartmentId $departmentId): Department;
+
+    public function add(Department $department): void;
+
+    public function existsWithSameName(string $name): bool;
 }

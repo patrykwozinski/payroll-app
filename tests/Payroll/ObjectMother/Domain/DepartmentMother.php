@@ -11,19 +11,20 @@ use App\Payroll\Domain\DepartmentId;
 final class DepartmentMother
 {
     public const ID = '476cc55f-02ba-4f9f-9e12-86ebfc1094a5';
+    public const NAME = 'Human Resources';
 
     public static function random(): Department
     {
-        return new Department(DepartmentId::fromString(self::ID), 'HR', BonusType::yearly(10));
+        return new Department(DepartmentId::fromString(self::ID), self::NAME, BonusType::yearly(10));
     }
 
     public static function withPercentageBonus(int $amount): Department
     {
-        return new Department(DepartmentId::fromString(self::ID), 'HR', BonusType::percentage($amount));
+        return new Department(DepartmentId::fromString(self::ID), self::NAME, BonusType::percentage($amount));
     }
 
     public static function withYearlyBonus(int $amount): Department
     {
-        return new Department(DepartmentId::fromString(self::ID), 'HR', BonusType::yearly($amount));
+        return new Department(DepartmentId::fromString(self::ID), self::NAME, BonusType::yearly($amount));
     }
 }

@@ -31,4 +31,26 @@ final class DoctrineDepartments implements Departments
 
         return $department;
     }
+
+    public function add(Department $department): void
+    {
+        $this->entityManager->persist($department);
+        $this->entityManager->flush();
+    }
+
+    public function existsWithSameName(string $name): bool
+    {
+        $result = $this->entityManager
+            ->createQueryBuilder()
+            ->select('1')
+            ->from('department', 'd')
+            ->where('d.name = :name')
+            ->setParameter('name', $name)
+            ->getQuery()
+            ->getResult();
+
+        dump($result);
+
+        return true;
+    }
 }

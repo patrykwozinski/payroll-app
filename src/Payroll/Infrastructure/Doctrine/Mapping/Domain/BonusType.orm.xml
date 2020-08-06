@@ -7,11 +7,11 @@
     <embeddable name="App\Payroll\Domain\BonusType">
         <field
                 name="type"
-                column="type"
+                column="bonus_type"
         />
         <field
                 name="value"
-                column="value"
+                column="bonus_value"
                 type="integer"
         />
     </embeddable>

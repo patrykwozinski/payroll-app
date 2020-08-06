@@ -9,15 +9,15 @@ use App\Payroll\Domain\DepartmentId;
 use App\Payroll\Domain\Error\DepartmentNotFound;
 use App\Payroll\Domain\WorkerFactory;
 use App\Payroll\Domain\WorkerId;
+use App\Payroll\Infrastructure\InMemory\InMemoryDepartments;
 use App\Tests\Common\TestDouble\Domain\StubClock;
 use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
-use App\Tests\Payroll\TestDouble\Domain\NotFoundDepartments;
-use App\Tests\Payroll\TestDouble\Domain\StubDepartments;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
 final class WorkerFactoryTest extends TestCase
 {
+    private InMemoryDepartments $inMemoryDepartments;
     private StubClock $clock;
     private WorkerId $workerId;
     private DepartmentId $departmentId;
@@ -27,6 +27,8 @@ final class WorkerFactoryTest extends TestCase
 
     protected function setUp(): void
     {
+        $this->inMemoryDepartments = new InMemoryDepartments();
+
         // Background
         $expectedDate = new Date(new DateTimeImmutable('2019-02-02 21:37:00'));
         $this->clock = StubClock::markFixed($expectedDate);
@@ -40,7 +42,7 @@ final class WorkerFactoryTest extends TestCase
     public function testCannotCreateWorkerWhenDepartmentNotFound(): void
     {
         // Given
-        $factory = new WorkerFactory(new NotFoundDepartments(), $this->clock);
+        $factory = new WorkerFactory($this->inMemoryDepartments, $this->clock);
 
         // Expect
         $this->expectException(DepartmentNotFound::class);
@@ -58,8 +60,9 @@ final class WorkerFactoryTest extends TestCase
     public function testWorkerCreatedSuccessfully(): void
     {
         // Given
+        $this->inMemoryDepartments->add(DepartmentMother::random());
         $factory = new WorkerFactory(
-            StubDepartments::whenAlways(DepartmentMother::random()),
+            $this->inMemoryDepartments,
             $this->clock
         );
 

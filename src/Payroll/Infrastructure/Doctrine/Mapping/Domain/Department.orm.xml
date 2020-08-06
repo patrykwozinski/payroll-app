@@ -16,6 +16,7 @@
         <field
                 name="name"
                 column="name"
+                unique="true"
         />
         <embedded
                 name="bonusType"

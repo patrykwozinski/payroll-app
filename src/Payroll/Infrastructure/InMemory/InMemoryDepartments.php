@@ -12,7 +12,7 @@ use App\Payroll\Domain\Error\DepartmentNotFound;
 final class InMemoryDepartments implements Departments
 {
     /** @var Department[] */
-    private array $departments;
+    private array $departments = [];
 
     public function oneById(DepartmentId $departmentId): Department
     {
@@ -23,5 +23,21 @@ final class InMemoryDepartments implements Departments
         }
 
         return $department;
+    }
+
+    public function add(Department $department): void
+    {
+        $this->departments[(string) $department->id()] = $department;
+    }
+
+    public function existsWithSameName(string $name): bool
+    {
+        foreach ($this->departments as $department) {
+            if ($department->name() === $name) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -11,15 +11,15 @@ final class HireWorkerCommand implements Command
     private string $id;
     private string $firstName;
     private string $lastName;
-    private string $department;
+    private string $departmentId;
     private int $salary;
 
-    public function __construct(string $id, string $firstName, string $lastName, string $department, int $salary)
+    public function __construct(string $id, string $firstName, string $lastName, string $departmentId, int $salary)
     {
         $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->department = $department;
+        $this->departmentId = $departmentId;
         $this->salary = $salary;
     }
 
@@ -40,7 +40,7 @@ final class HireWorkerCommand implements Command
 
     public function departmentId(): string
     {
-        return $this->department;
+        return $this->departmentId;
     }
 
     public function salary(): int

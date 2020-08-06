@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
+use App\Payroll\Domain\Error\BonusTypeNotSupported;
 use Assert\Assertion;
 
 final class BonusType
@@ -30,6 +31,16 @@ final class BonusType
         Assertion::lessThan($value, 100, 'Percentage must be less than 100%');
 
         return new self(self::TYPE_PERCENTAGE, $value);
+    }
+
+    /** @throws BonusTypeNotSupported */
+    public static function fromScalars(string $type, int $value): self
+    {
+        if (self::TYPE_YEARLY !== $type && self::TYPE_PERCENTAGE !== $type) {
+            throw BonusTypeNotSupported::whenIs($type);
+        }
+
+        return new self($type, $value);
     }
 
     public function value(): int

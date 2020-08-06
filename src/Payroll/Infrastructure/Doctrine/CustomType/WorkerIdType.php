@@ -6,9 +6,9 @@ namespace App\Payroll\Infrastructure\Doctrine\CustomType;
 
 use App\Payroll\Domain\WorkerId;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Ramsey\Uuid\Doctrine\UuidBinaryType;
+use Ramsey\Uuid\Doctrine\UuidType;
 
-final class WorkerIdType extends UuidBinaryType
+final class WorkerIdType extends UuidType
 {
     public const NAME = 'worker_id';
 
