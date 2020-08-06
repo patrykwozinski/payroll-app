@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Domain\Clock;
+namespace App\Tests\Common\TestDouble\Domain;
 
 use App\Common\Date;
 use App\Common\Domain\Clock;

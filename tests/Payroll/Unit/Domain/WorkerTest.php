@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Payroll\Unit\Domain;
 
 use App\Common\Date;
-use App\Common\Domain\Clock\StubClock;
-use App\Payroll\Domain\BonusSalary;
-use App\Payroll\Domain\Event\BonusSalaryRecalculated;
+use App\Tests\Common\TestDouble\Domain\StubClock;
 use App\Payroll\Domain\Event\WorkerHired;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\WorkerId;
 use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
 use App\Tests\Payroll\ObjectMother\Domain\PersonalDataMother;
 use App\Tests\Payroll\ObjectMother\Domain\SalaryMother;
-use App\Tests\Payroll\ObjectMother\Domain\SeniorityMother;
 use PHPUnit\Framework\TestCase;
 
 final class WorkerTest extends TestCase
