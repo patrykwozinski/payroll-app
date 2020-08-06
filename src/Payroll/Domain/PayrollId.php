@@ -11,7 +11,7 @@ final class PayrollId
 {
     private UuidInterface $id;
 
-    private function __construct(UuidInterface $id)
+    public function __construct(UuidInterface $id)
     {
         $this->id = $id;
     }
@@ -24,6 +24,11 @@ final class PayrollId
     public static function fromString(string $id): self
     {
         return new self(Uuid::fromString($id));
+    }
+
+    public function id(): UuidInterface
+    {
+        return $this->id;
     }
 
     public function __toString(): string

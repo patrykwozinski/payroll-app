@@ -2,4 +2,7 @@ parameters:
     level: max
     paths:
         - %currentWorkingDirectory%/src
+    excludes_analyse:
+            - %currentWorkingDirectory%/src/Payroll/Infrastructure/Doctrine/CustomType
+            - %currentWorkingDirectory%/src/Payroll/Infrastructure/Doctrine/Migrations
     checkMissingIterableValueType: false

@@ -39,4 +39,9 @@ final class Money
 
         return new self($percent * $this->money);
     }
+
+    public function value(): float
+    {
+        return $this->money;
+    }
 }

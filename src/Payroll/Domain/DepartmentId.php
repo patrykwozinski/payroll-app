@@ -11,7 +11,7 @@ final class DepartmentId
 {
     private UuidInterface $id;
 
-    private function __construct(UuidInterface $id)
+    public function __construct(UuidInterface $id)
     {
         $this->id = $id;
     }

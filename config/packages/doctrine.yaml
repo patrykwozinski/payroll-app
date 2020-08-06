@@ -14,8 +14,21 @@ doctrine:
                 default_table_options:
                     charset: utf8
                     collate: utf8_unicode_ci
+        types:
+            # Common
+            custom_date: App\Common\Infrastructure\Doctrine\CustomType\CustomDateType
+            # Payroll
+            worker_id: App\Payroll\Infrastructure\Doctrine\CustomType\WorkerIdType
+            payroll_id: App\Payroll\Infrastructure\Doctrine\CustomType\PayrollIdType
+            money: App\Payroll\Infrastructure\Doctrine\CustomType\MoneyType
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
+            App\Payroll\Domain:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Payroll/Infrastructure/Doctrine/Mapping/Domain'
+                prefix: 'App\Payroll\Domain'
+                alias: Payroll
