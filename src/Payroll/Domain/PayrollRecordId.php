@@ -26,6 +26,11 @@ final class PayrollRecordId
         return new self(Uuid::fromString($id));
     }
 
+    public function id(): UuidInterface
+    {
+        return $this->id;
+    }
+
     public function __toString(): string
     {
         return $this->id->toString();

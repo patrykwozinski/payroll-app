@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
-final class Department
+class Department // FINAL!
 {
     private DepartmentId $id;
     private string $name;

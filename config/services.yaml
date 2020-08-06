@@ -21,9 +21,6 @@ services:
         App\Payroll\Domain\BonusCalculator:
             tags: [payroll.bonus_calculator]
 
-    App\Payroll\Domain\PayrollGenerator:
-        $bonusCalculators:
-            - !tagged_iterator payroll.bonus_calculator
-
     App\Payroll\Domain\Workers: '@App\Payroll\Infrastructure\Doctrine\Persistence\DoctrineWorkers'
     App\Payroll\Domain\Departments: '@App\Payroll\Infrastructure\Doctrine\Persistence\DoctrineDepartments'
+    App\Payroll\Domain\Payrolls: '@App\Payroll\Infrastructure\Doctrine\Persistence\DoctrinePayrolls'

@@ -12,7 +12,7 @@ final class Payroll extends AggregateRoot
     private PayrollId $id;
     private Date $generatedAt;
     /** @var PayrollRecord[] */
-    private array $records = [];
+    private iterable $records = [];
 
     public function __construct(PayrollId $id, Date $generatedAt)
     {

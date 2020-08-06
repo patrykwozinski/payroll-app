@@ -21,6 +21,7 @@
         <field
                 name="salaryBonus"
                 column="salary_bonus"
+                type="money"
         />
     </entity>
 </doctrine-mapping>

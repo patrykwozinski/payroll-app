@@ -26,6 +26,12 @@ final class DoctrineWorkers implements Workers
 
     public function workingUntil(Date $date): array
     {
-        return [];
+        return $this->entityManager
+            ->createQueryBuilder()
+            ->select('w')
+            ->from(Worker::class, 'w')
+            ->join('w.department', 'd')
+            ->getQuery()
+            ->getResult();
     }
 }

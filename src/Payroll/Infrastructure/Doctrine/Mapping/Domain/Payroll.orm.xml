@@ -18,6 +18,10 @@
                 column="generated_at"
                 type="custom_date"
         />
-        <many-to-many field="records" target-entity="PayrollRecord" />
+        <many-to-many field="records" target-entity="PayrollRecord">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </many-to-many>
     </entity>
 </doctrine-mapping>
