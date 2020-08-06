@@ -6,7 +6,6 @@ namespace App\Payroll\UserInterface\Cli;
 
 use App\Common\Application\Command\Bus;
 use App\Payroll\Application\Command\CreateDepartment\CreateDepartmentCommand;
-use App\Payroll\Application\Command\HireWorker\HireWorkerCommand;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -56,7 +55,7 @@ final class CreateDepartmentCliCommand extends Command
             $departmentId,
             $name,
             $bonusType,
-            (int)$bonusValue
+            (int) $bonusValue
         );
 
         $this->commandBus->dispatch($command);
