@@ -50,4 +50,14 @@ final class Worker extends AggregateRoot
 
         return Money::zero();
     }
+
+    public function snapshot(): WorkerSnapshot
+    {
+        return new WorkerSnapshot(
+            $this->id,
+            $this->personalData,
+            $this->department,
+            $this->salary
+        );
+    }
 }

@@ -34,7 +34,7 @@ final class WorkerMother
 
     public static function make(): self
     {
-        return new self;
+        return new self();
     }
 
     public function withDepartment(Department $department): self

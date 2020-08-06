@@ -39,11 +39,11 @@ final class BonusType
 
     public function isYearly(): bool
     {
-        return $this->type === self::TYPE_YEARLY;
+        return self::TYPE_YEARLY === $this->type;
     }
 
     public function isPercentage(): bool
     {
-        return $this->type === self::TYPE_PERCENTAGE;
+        return self::TYPE_PERCENTAGE === $this->type;
     }
 }

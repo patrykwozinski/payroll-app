@@ -9,7 +9,6 @@ use App\Payroll\Domain\WorkerId;
 
 final class WorkerHired implements Event
 {
-    /** @var WorkerId */
     private WorkerId $workerId;
 
     public function __construct(WorkerId $workerId)
