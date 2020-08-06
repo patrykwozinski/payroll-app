@@ -21,6 +21,7 @@ doctrine:
             worker_id: App\Payroll\Infrastructure\Doctrine\CustomType\WorkerIdType
             department_id: App\Payroll\Infrastructure\Doctrine\CustomType\DepartmentIdType
             payroll_id: App\Payroll\Infrastructure\Doctrine\CustomType\PayrollIdType
+            payroll_record_id: App\Payroll\Infrastructure\Doctrine\CustomType\PayrollRecordIdType
             money: App\Payroll\Infrastructure\Doctrine\CustomType\MoneyType
     orm:
         auto_generate_proxy_classes: true

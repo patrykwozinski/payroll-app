@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+    https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity
+            name="App\Payroll\Domain\Payroll"
+            table="payroll">
+        <id
+                name="id"
+                column="id"
+                type="payroll_id">
+            <generator strategy="NONE"/>
+        </id>
+        <field
+                name="generatedAt"
+                column="generated_at"
+                type="custom_date"
+        />
+        <many-to-many field="records" target-entity="PayrollRecord" />
+    </entity>
+</doctrine-mapping>

@@ -1,6 +1,13 @@
 # payroll-app
 There you can manage payrolls in your company!
 
+## Installation
+You need a `Docker` with `docker-compose`, bro! 👌
+```bash
+docker-compose build
+docker-compose up -d
+```
+
 ## How to create department?
 ```bash
 docker-compose exec payroll-app bin/console payroll:create-department <name> <bonus type> <bonus value>

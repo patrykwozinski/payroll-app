@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+    https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity
+            name="App\Payroll\Domain\PayrollRecord"
+            table="payroll_record">
+        <id
+                name="id"
+                column="id"
+                type="payroll_record_id">
+            <generator strategy="NONE"/>
+        </id>
+        <embedded
+                name="workerSnapshot"
+                class="App\Payroll\Domain\WorkerSnapshot"
+                use-column-prefix="false"
+        />
+        <field
+                name="salaryBonus"
+                column="salary_bonus"
+        />
+    </entity>
+</doctrine-mapping>

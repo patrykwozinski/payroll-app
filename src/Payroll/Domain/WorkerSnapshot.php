@@ -6,14 +6,14 @@ namespace App\Payroll\Domain;
 
 final class WorkerSnapshot
 {
-    private WorkerId $id;
+    private WorkerId $workerId;
     private PersonalData $personalData;
     private Department $department;
     private Money $salary;
 
-    public function __construct(WorkerId $id, PersonalData $personalData, Department $department, Money $salary)
+    public function __construct(WorkerId $workerId, PersonalData $personalData, Department $department, Money $salary)
     {
-        $this->id = $id;
+        $this->workerId = $workerId;
         $this->personalData = $personalData;
         $this->department = $department;
         $this->salary = $salary;
