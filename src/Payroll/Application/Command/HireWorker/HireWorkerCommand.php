@@ -13,18 +13,14 @@ final class HireWorkerCommand implements Command
     private string $lastName;
     private string $department;
     private int $salary;
-    private string $bonusType;
-    private int $bonusValue;
 
-    public function __construct(string $id, string $firstName, string $lastName, string $department, int $salary, string $bonusType, int $bonusValue)
+    public function __construct(string $id, string $firstName, string $lastName, string $department, int $salary)
     {
         $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->department = $department;
         $this->salary = $salary;
-        $this->bonusType = $bonusType;
-        $this->bonusValue = $bonusValue;
     }
 
     public function id(): string
@@ -50,15 +46,5 @@ final class HireWorkerCommand implements Command
     public function salary(): int
     {
         return $this->salary;
-    }
-
-    public function bonusType(): string
-    {
-        return $this->bonusType;
-    }
-
-    public function bonusValue(): int
-    {
-        return $this->bonusValue;
     }
 }
