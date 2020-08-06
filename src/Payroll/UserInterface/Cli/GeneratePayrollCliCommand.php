@@ -6,7 +6,7 @@ namespace App\Payroll\UserInterface\Cli;
 
 use App\Common\Application\Command\Bus;
 use App\Common\Date;
-use App\Payroll\Application\Command\GeneratePayroll\GeneratePayrollCommand as GeneratePayroll;
+use App\Payroll\Application\Command\GeneratePayroll\GeneratePayrollCommand;
 use DateTimeImmutable;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class GeneratePayrollCommand extends Command
+final class GeneratePayrollCliCommand extends Command
 {
     protected static $defaultName = 'payroll:generate-payroll';
 
@@ -50,7 +50,7 @@ final class GeneratePayrollCommand extends Command
 
         $date = new Date($dateTime);
 
-        $command = new GeneratePayroll(
+        $command = new GeneratePayrollCommand(
             Uuid::uuid4()->toString(),
             $date
         );

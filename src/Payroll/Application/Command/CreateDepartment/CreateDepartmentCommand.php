@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Payroll\Application\Command\CreateDepartment;
 
-final class CreateDepartmentCommand
+use App\Common\Application\Command;
+
+final class CreateDepartmentCommand implements Command
 {
     private string $id;
     private string $name;

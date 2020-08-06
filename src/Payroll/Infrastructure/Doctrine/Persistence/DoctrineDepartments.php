@@ -43,14 +43,13 @@ final class DoctrineDepartments implements Departments
         $result = $this->entityManager
             ->createQueryBuilder()
             ->select('1')
-            ->from('department', 'd')
+            ->from(Department::class, 'd')
             ->where('d.name = :name')
             ->setParameter('name', $name)
             ->getQuery()
+            ->setMaxResults(1)
             ->getResult();
 
-        dump($result);
-
-        return true;
+        return false === empty($result);
     }
 }

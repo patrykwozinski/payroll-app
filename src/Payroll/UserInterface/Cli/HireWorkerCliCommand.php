@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Payroll\UserInterface\Cli;
 
 use App\Common\Application\Command\Bus;
-use App\Payroll\Application\Command\HireWorker\HireWorkerCommand as HireWorker;
+use App\Payroll\Application\Command\HireWorker\HireWorkerCommand;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class HireWorkerCommand extends Command
+final class HireWorkerCliCommand extends Command
 {
     private const OPTION_FIRST_NAME = 'first-name';
     private const OPTION_LAST_NAME = 'last-name';
@@ -55,7 +55,7 @@ final class HireWorkerCommand extends Command
         $salary = $input->getArgument(self::OPTION_SALARY);
 
         $workerId = Uuid::uuid4()->toString();
-        $command = new HireWorker(
+        $command = new HireWorkerCommand(
             $workerId,
             $firstName,
             $lastName,
