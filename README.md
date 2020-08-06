@@ -1,7 +1,6 @@
 # payroll-app
 There you can manage payrolls in your company!
 
----
 
 ## Technical part
 ### Installation
@@ -26,7 +25,6 @@ docker-compose exec payroll-app composer tests:unit
 ```
 In the future 
 
----
 
 ## Business part
 ### How to create department?
