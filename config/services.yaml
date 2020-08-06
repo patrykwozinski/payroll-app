@@ -18,3 +18,9 @@ services:
     _instanceof:
         App\Common\Application\Command\Handler:
             tags: [messenger.message_handler]
+        App\Payroll\Domain\BonusCalculator:
+            tags: [payroll.bonus_calculator]
+
+    App\Payroll\Domain\PayrollGenerator:
+        $bonusCalculators:
+            - !tagged_iterator payroll.bonus_calculator

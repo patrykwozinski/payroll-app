@@ -8,5 +8,4 @@ use Symfony\Component\Console\Command\Command;
 
 final class GeneratePayrollCommand extends Command
 {
-
 }
