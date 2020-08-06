@@ -29,4 +29,9 @@ final class Payroll extends AggregateRoot
     {
         $this->records[] = $payrollRecord;
     }
+
+    public function isEmpty(): bool
+    {
+        return 0 === \count($this->records);
+    }
 }
