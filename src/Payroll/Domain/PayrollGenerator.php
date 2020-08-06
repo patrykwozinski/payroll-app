@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Payroll\Domain;
 
 use App\Common\Date;
+use App\Payroll\Domain\Error\CannotGenerateEmptyPayroll;
 
 final class PayrollGenerator
 {
@@ -18,6 +19,7 @@ final class PayrollGenerator
         $this->bonusCalculators = $bonusCalculators;
     }
 
+    /** @throws CannotGenerateEmptyPayroll */
     public function generate(PayrollId $payrollId, Date $date): Payroll
     {
         $payroll = Payroll::generate($payrollId, $date);
@@ -32,6 +34,10 @@ final class PayrollGenerator
                     $salaryBonus
                 )
             );
+        }
+
+        if ($payroll->isEmpty()) {
+            throw CannotGenerateEmptyPayroll::forDate($date);
         }
 
         return $payroll;

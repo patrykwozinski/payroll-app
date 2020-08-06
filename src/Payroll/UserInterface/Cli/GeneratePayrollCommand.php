@@ -37,7 +37,9 @@ final class GeneratePayrollCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $dateTime = DateTimeImmutable::createFromFormat('Y-m-d', $input->getArgument('date'));
+        /** @var string $inputDate */
+        $inputDate = $input->getArgument('date');
+        $dateTime = DateTimeImmutable::createFromFormat('Y-m-d', $inputDate);
         $io = new SymfonyStyle($input, $output);
 
         if (false === $dateTime instanceof DateTimeImmutable) {

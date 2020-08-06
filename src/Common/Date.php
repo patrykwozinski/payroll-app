@@ -19,4 +19,9 @@ final class Date
     {
         return $this->dateTime->diff($hiredAt->dateTime)->y;
     }
+
+    public function __toString(): string
+    {
+        return $this->dateTime->format('Y-m-d');
+    }
 }

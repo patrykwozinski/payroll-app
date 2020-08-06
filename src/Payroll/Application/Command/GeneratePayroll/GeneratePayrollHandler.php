@@ -25,8 +25,6 @@ final class GeneratePayrollHandler implements Handler
         $payrollId = PayrollId::fromString($command->payrollId());
         $payroll = $this->payrollGenerator->generate($payrollId, $command->date());
 
-        if (false === $payroll->isEmpty()) {
-            $this->payrolls->add($payroll);
-        }
+        $this->payrolls->add($payroll);
     }
 }

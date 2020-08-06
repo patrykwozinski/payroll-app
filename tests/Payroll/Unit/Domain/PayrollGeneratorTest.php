@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Payroll\Unit\Domain;
 
 use App\Common\Date;
+use App\Payroll\Domain\Error\CannotGenerateEmptyPayroll;
 use App\Payroll\Domain\PayrollGenerator;
 use App\Payroll\Domain\PayrollId;
 use App\Payroll\Infrastructure\InMemory\InMemoryWorkers;
@@ -25,16 +26,16 @@ final class PayrollGeneratorTest extends TestCase
         $this->date = new Date(new DateTimeImmutable('2020-01-05'));
     }
 
-    public function testGeneratedPayrollIsEmptyWhenNoWorkers(): void
+    public function testCannotGeneratedPayrollWhenNoWorkers(): void
     {
         // Given
         $payrollId = PayrollId::random();
 
-        // When
-        $payroll = $this->payrollGenerator->generate($payrollId, $this->date);
+        // Expect
+        $this->expectException(CannotGenerateEmptyPayroll::class);
 
-        // Then
-        self::assertTrue($payroll->isEmpty(), 'Payroll should be empty when no workers');
+        // When
+        $this->payrollGenerator->generate($payrollId, $this->date);
     }
 
     public function testGeneratedPayrollIsNotEmptyWhenWorkersFound(): void
