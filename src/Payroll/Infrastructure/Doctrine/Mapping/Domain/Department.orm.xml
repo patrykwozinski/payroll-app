@@ -5,29 +5,22 @@
         xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
     https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity
-            name="App\Payroll\Domain\Worker"
-            table="worker">
+            name="App\Payroll\Domain\Department"
+            table="department">
         <id
                 name="id"
                 column="id"
-                type="worker_id">
+                type="department_id">
             <generator strategy="NONE"/>
         </id>
+        <field
+                name="name"
+                column="name"
+        />
         <embedded
-                name="personalData"
-                class="App\Payroll\Domain\PersonalData"
+                name="bonusType"
+                class="App\Payroll\Domain\BonusType"
                 use-column-prefix="false"
-        />
-        <many-to-one field="department" target-entity="Department" />
-        <field
-                name="salary"
-                column="salary"
-                type="money"
-        />
-        <field
-                name="hiredAt"
-                column="hired_at"
-                type="custom_date"
         />
     </entity>
 </doctrine-mapping>

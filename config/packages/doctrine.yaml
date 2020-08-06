@@ -19,6 +19,7 @@ doctrine:
             custom_date: App\Common\Infrastructure\Doctrine\CustomType\CustomDateType
             # Payroll
             worker_id: App\Payroll\Infrastructure\Doctrine\CustomType\WorkerIdType
+            department_id: App\Payroll\Infrastructure\Doctrine\CustomType\DepartmentIdType
             payroll_id: App\Payroll\Infrastructure\Doctrine\CustomType\PayrollIdType
             money: App\Payroll\Infrastructure\Doctrine\CustomType\MoneyType
     orm:
