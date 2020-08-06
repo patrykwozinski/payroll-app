@@ -23,7 +23,7 @@ final class HireWorkerHandler implements Handler
 
     public function __invoke(HireWorkerCommand $command): void
     {
-        $worker = $this->workerFactory->fromScalars(
+        $worker = $this->workerFactory->create(
             WorkerId::fromString($command->id()),
             DepartmentId::fromString($command->departmentId()),
             $command->firstName(),

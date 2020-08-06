@@ -17,7 +17,7 @@ final class WorkerFactory
         $this->clock = $clock;
     }
 
-    public function fromScalars(WorkerId $workerId, DepartmentId $departmentId, string $firstName, string $lastName, int $salary): Worker
+    public function create(WorkerId $workerId, DepartmentId $departmentId, string $firstName, string $lastName, int $salary): Worker
     {
         $department = $this->departments->oneById($departmentId);
 

@@ -46,7 +46,7 @@ final class WorkerFactoryTest extends TestCase
         $this->expectException(DepartmentNotFound::class);
 
         // When
-        $factory->fromScalars(
+        $factory->create(
             $this->workerId,
             $this->departmentId,
             $this->firstName,
@@ -64,7 +64,7 @@ final class WorkerFactoryTest extends TestCase
         );
 
         // When
-        $worker = $factory->fromScalars(
+        $worker = $factory->create(
             $this->workerId,
             $this->departmentId,
             $this->firstName,
