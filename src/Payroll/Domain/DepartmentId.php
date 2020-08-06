@@ -7,18 +7,13 @@ namespace App\Payroll\Domain;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
-final class WorkerId
+final class DepartmentId
 {
     private UuidInterface $id;
 
     private function __construct(UuidInterface $id)
     {
         $this->id = $id;
-    }
-
-    public static function random(): self
-    {
-        return new self(Uuid::uuid4());
     }
 
     public static function fromString(string $id): self

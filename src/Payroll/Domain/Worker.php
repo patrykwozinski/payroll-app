@@ -6,7 +6,6 @@ namespace App\Payroll\Domain;
 
 use App\Common\Date;
 use App\Common\Domain\AggregateRoot;
-use App\Common\Domain\Clock;
 use App\Payroll\Domain\Event\WorkerHired;
 
 final class Worker extends AggregateRoot
@@ -26,13 +25,16 @@ final class Worker extends AggregateRoot
         $this->hiredAt = $hiredAt;
     }
 
-    public static function hire(WorkerId $id, PersonalData $personalData, Department $department, Salary $salary, Clock $clock): self
+    public static function hire(WorkerId $id, PersonalData $personalData, Department $department, Salary $salary, Date $hiredAt): self
     {
-        $hiredAt = $clock->now();
-
         $worker = new self($id, $personalData, $department, $salary, $hiredAt);
         $worker->recordThat(new WorkerHired($id));
 
         return $worker;
+    }
+
+    public function id(): WorkerId
+    {
+        return $this->id;
     }
 }

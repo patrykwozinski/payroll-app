@@ -5,6 +5,7 @@
         "php": "^7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "beberlei/assert": "^3.2",
         "ramsey/uuid": "^4.1",
         "symfony/console": "5.1.*",
         "symfony/dotenv": "5.1.*",
@@ -77,7 +78,7 @@
             "@tests:unit"
         ],
         "tests:unit": [
-            "bin/phpunit --testsuite=unit"
+            "bin/phpunit --testsuite=unit --testdox"
         ]
     },
     "conflict": {
