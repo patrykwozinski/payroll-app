@@ -43,4 +43,7 @@ In the result should be UUID of a hired worker.
 I'd like to add more types of tests.
 
 ### How to generate a payroll?
-~ work in progress
+```bash
+docker-compose exec payroll-app bin/console payroll:generate <date>
+docker-compose exec payroll-app bin/console payroll:generate "2020-01-04"
+```
