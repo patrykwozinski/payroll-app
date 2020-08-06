@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
+use App\Common\Date;
 use App\Common\Domain\AggregateRoot;
-use App\Payroll\Domain\Event\BonusSalaryRecalculated;
+use App\Common\Domain\Clock;
 use App\Payroll\Domain\Event\WorkerHired;
 
 final class Worker extends AggregateRoot
@@ -13,32 +14,25 @@ final class Worker extends AggregateRoot
     private WorkerId $id;
     private PersonalData $personalData;
     private Department $department;
-    private Seniority $seniority;
     private Salary $salary;
-    private BonusSalary $bonusSalary;
+    private Date $hiredAt;
 
-    public function __construct(WorkerId $id, PersonalData $personalData, Department $department, Seniority $seniority, Salary $salary, BonusSalary $bonusSalary)
+    public function __construct(WorkerId $id, PersonalData $personalData, Department $department, Salary $salary, Date $hiredAt)
     {
         $this->id = $id;
         $this->personalData = $personalData;
         $this->department = $department;
-        $this->seniority = $seniority;
         $this->salary = $salary;
-        $this->bonusSalary = $bonusSalary;
+        $this->hiredAt = $hiredAt;
     }
 
-    public static function hire(WorkerId $id, PersonalData $personalData, Department $department, Seniority $seniority, Salary $salary): self
+    public static function hire(WorkerId $id, PersonalData $personalData, Department $department, Salary $salary, Clock $clock): self
     {
-        $worker = new self($id, $personalData, $department, $seniority, $salary, BonusSalary::starting());
+        $hiredAt = $clock->now();
+
+        $worker = new self($id, $personalData, $department, $salary, $hiredAt);
         $worker->recordThat(new WorkerHired($id));
 
         return $worker;
-    }
-
-    public function recalculateBonusSalary(BonusSalaryRule $rule): void
-    {
-        $this->bonusSalary = $rule->calculate($this->bonusSalary, $this->department, $this->seniority);
-
-        $this->recordThat(new BonusSalaryRecalculated($this->id, $this->bonusSalary, $this->bonusSalary));
     }
 }
