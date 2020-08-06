@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  payroll-app:
+    container_name: payroll-app
+    build:
+      context: docker/php-fpm
+    env_file:
+      - .env
+    depends_on:
+      - payroll-db
+    volumes:
+      - ./:/var/www
+
+  payroll-db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - payroll-db-vol:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+
+volumes:
+  payroll-db-vol: ~
