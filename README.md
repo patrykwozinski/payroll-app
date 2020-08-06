@@ -21,3 +21,18 @@ docker-compose exec payroll-app bin/console payroll:hire-worker "<first name>" "
 docker-compose exec payroll-app bin/console payroll:hire-worker "Jon" "Snow" "91587124-1ed0-4550-af23-a7fe18acf2d3" "5000"
 ```
 In the result should be UUID of a hired worker.
+
+## Static analysis
+Following command is running: PHP CS Fixer, PHP Stan and deptrac.
+```bash
+docker-compose exec payroll-app composer quality:check
+```
+
+## Tests
+You can run tests via:
+```bash
+docker-compose exec payroll-app composer tests:all
+# OR
+docker-compose exec payroll-app composer tests:unit
+```
+In the future I'd like to add more types of tests.
