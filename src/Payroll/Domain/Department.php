@@ -8,7 +8,6 @@ final class Department
 {
     private DepartmentId $id;
     private string $name;
-    /** @var BonusType */
     private BonusType $bonusType;
 
     public function __construct(DepartmentId $id, string $name, BonusType $bonusType)

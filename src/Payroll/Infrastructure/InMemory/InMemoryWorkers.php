@@ -16,4 +16,10 @@ final class InMemoryWorkers implements Workers
     {
         $this->workers[] = $worker;
     }
+
+    /** @return Worker[] */
+    public function all(): array
+    {
+        return $this->workers;
+    }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
-use Webmozart\Assert\Assert;
+use Assert\Assertion;
 
 final class BonusType
 {
@@ -26,8 +26,8 @@ final class BonusType
 
     public static function percentage(int $value): self
     {
-        Assert::greaterThan($value, 0, 'Percentage must be greater than 0%');
-        Assert::lessThan($value, 100, 'Percentage must be less than 100%');
+        Assertion::greaterThan($value, 0, 'Percentage must be greater than 0%');
+        Assertion::lessThan($value, 100, 'Percentage must be less than 100%');
 
         return new self(self::TYPE_PERCENTAGE, $value);
     }
@@ -39,11 +39,11 @@ final class BonusType
 
     public function isYearly(): bool
     {
-        return $this->type === self::TYPE_YEARLY;
+        return self::TYPE_YEARLY === $this->type;
     }
 
     public function isPercentage(): bool
     {
-        return $this->type === self::TYPE_PERCENTAGE;
+        return self::TYPE_PERCENTAGE === $this->type;
     }
 }
