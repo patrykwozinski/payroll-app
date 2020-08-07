@@ -7,9 +7,9 @@ namespace App\Common\Calendar\Date;
 use App\Common\Calendar\Date;
 use DateTimeImmutable;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\DateType;
+use Doctrine\DBAL\Types\DateType as DBALDateType;
 
-final class Type extends DateType
+final class DateType extends DBALDateType
 {
     private const NAME = 'custom_date';
 
