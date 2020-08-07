@@ -19,6 +19,8 @@ services:
         App\Common\CQRS\CommandHandler:
             tags: [messenger.message_handler]
 
+    App\Common\Calendar\Clock: '@App\Common\Calendar\Clock\SystemClock'
+
     App\Payroll\Domain\Workers: '@App\Payroll\Infrastructure\Doctrine\ORM\Domain\DoctrineORMWorkers'
     App\Payroll\Domain\Departments: '@App\Payroll\Infrastructure\Doctrine\ORM\Domain\DoctrineORMDepartments'
     App\Payroll\Domain\Payrolls: '@App\Payroll\Infrastructure\Doctrine\ORM\Domain\DoctrineORMPayrolls'

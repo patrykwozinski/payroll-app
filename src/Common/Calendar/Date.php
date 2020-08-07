@@ -22,6 +22,6 @@ final class Date
 
     public function __toString(): string
     {
-        return $this->dateTime->format('Y-m-d');
+        return $this->dateTime->format(DateTimeImmutable::ATOM);
     }
 }
