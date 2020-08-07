@@ -8,5 +8,5 @@ use Ramsey\Uuid\UuidInterface;
 
 interface PayrollQuery
 {
-    public function ofId(UuidInterface $payrollId): Payroll;
+    public function ofId(UuidInterface $payrollId): ?PayrollView;
 }

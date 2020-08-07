@@ -17,6 +17,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class GeneratePayrollCliCommand extends Command
 {
+    private const OPTION_DATE = 'date';
+
     protected static $defaultName = 'payroll:generate';
 
     private Application $application;
@@ -32,13 +34,13 @@ final class GeneratePayrollCliCommand extends Command
     {
         $this
             ->setDescription('Generates payroll for current workers')
-            ->addArgument('date', InputArgument::REQUIRED);
+            ->addArgument(self::OPTION_DATE, InputArgument::REQUIRED);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var string $inputDate */
-        $inputDate = $input->getArgument('date');
+        $inputDate = $input->getArgument(self::OPTION_DATE);
         $dateTime = DateTimeImmutable::createFromFormat('Y-m-d', $inputDate);
         $io = new SymfonyStyle($input, $output);
 
@@ -49,15 +51,18 @@ final class GeneratePayrollCliCommand extends Command
         }
 
         $date = new Date($dateTime);
+        $payrollId = Uuid::uuid4()->toString();
 
         $command = new GeneratePayrollCommand(
-            Uuid::uuid4()->toString(),
+            $payrollId,
             $date
         );
 
         $this->application->execute($command);
 
-        $io->success('Payroll generated successfully, yo!');
+        $io->success(
+            sprintf('Payroll generated successfully. ID: %s', $payrollId)
+        );
 
         return 0;
     }
