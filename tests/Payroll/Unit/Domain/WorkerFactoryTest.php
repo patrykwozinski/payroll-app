@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Unit\Domain;
 
+use App\Common\Calendar\Clock\FixedClock;
 use App\Common\Calendar\Date;
 use App\Payroll\Domain\DepartmentId;
 use App\Payroll\Domain\Error\DepartmentNotFound;
 use App\Payroll\Domain\WorkerFactory;
 use App\Payroll\Domain\WorkerId;
 use App\Payroll\Infrastructure\InMemory\InMemoryDepartments;
-use App\Tests\Common\TestDouble\StubClock;
 use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 final class WorkerFactoryTest extends TestCase
 {
     private InMemoryDepartments $inMemoryDepartments;
-    private StubClock $clock;
+    private FixedClock $clock;
     private WorkerId $workerId;
     private DepartmentId $departmentId;
     private string $firstName;
@@ -30,8 +30,8 @@ final class WorkerFactoryTest extends TestCase
         $this->inMemoryDepartments = new InMemoryDepartments();
 
         // Background
-        $expectedDate = new Date(new DateTimeImmutable('2019-02-02 21:37:00'));
-        $this->clock = StubClock::markFixed($expectedDate);
+        $fixedDate = new Date(new DateTimeImmutable('2019-02-02 21:37:00'));
+        $this->clock = FixedClock::on($fixedDate);
         $this->workerId = WorkerId::random();
         $this->departmentId = DepartmentId::fromString(DepartmentMother::ID);
         $this->firstName = 'John';

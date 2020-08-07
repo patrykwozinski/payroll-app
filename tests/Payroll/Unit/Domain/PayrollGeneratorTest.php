@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Unit\Domain;
 
+use App\Common\Calendar\Clock\FixedClock;
 use App\Common\Calendar\Date;
 use App\Payroll\Domain\BonusCalculator\PercentageBonusCalculator;
 use App\Payroll\Domain\BonusCalculator\YearlyBonusCalculator;
@@ -11,7 +12,6 @@ use App\Payroll\Domain\Error\CannotGenerateEmptyPayroll;
 use App\Payroll\Domain\PayrollGenerator;
 use App\Payroll\Domain\PayrollId;
 use App\Payroll\Infrastructure\InMemory\InMemoryWorkers;
-use App\Tests\Common\TestDouble\StubClock;
 use App\Tests\Payroll\ObjectMother\Domain\WorkerMother;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
@@ -24,8 +24,8 @@ final class PayrollGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $expectedDate = new Date(new DateTimeImmutable('2020-01-05'));
-        $clock = StubClock::markFixed($expectedDate);
+        $fixedDate = new Date(new DateTimeImmutable('2020-01-05'));
+        $clock = FixedClock::on($fixedDate);
 
         $this->inMemoryWorkers = new InMemoryWorkers();
         $this->payrollGenerator = new PayrollGenerator(
@@ -34,7 +34,7 @@ final class PayrollGeneratorTest extends TestCase
             new YearlyBonusCalculator($clock),
             new PercentageBonusCalculator()
         );
-        $this->date = $expectedDate;
+        $this->date = $fixedDate;
     }
 
     public function testCannotGeneratedPayrollWhenNoWorkers(): void

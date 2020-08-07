@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\TestDouble;
+namespace App\Common\Calendar\Clock;
 
 use App\Common\Calendar\Clock;
 use App\Common\Calendar\Date;
 
-final class StubClock implements Clock
+final class FixedClock implements Clock
 {
     private Date $expectedDate;
 
@@ -16,9 +16,9 @@ final class StubClock implements Clock
         $this->expectedDate = $expectedDate;
     }
 
-    public static function markFixed(Date $expectedDate): self
+    public static function on(Date $fixedDate): self
     {
-        return new self($expectedDate);
+        return new self($fixedDate);
     }
 
     public function now(): Date

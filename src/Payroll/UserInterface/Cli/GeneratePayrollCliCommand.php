@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Payroll\UserInterface\Cli;
 
 use App\Common\Calendar\Date;
-use App\Common\CQRS\CommandBus;
+use App\Common\CQRS\Application;
 use App\Payroll\Application\Command\GeneratePayroll\GeneratePayrollCommand;
 use DateTimeImmutable;
 use Ramsey\Uuid\Uuid;
@@ -19,13 +19,13 @@ final class GeneratePayrollCliCommand extends Command
 {
     protected static $defaultName = 'payroll:generate';
 
-    private CommandBus $commandBus;
+    private Application $application;
 
-    public function __construct(CommandBus $commandBus)
+    public function __construct(Application $application)
     {
         parent::__construct(self::$defaultName);
 
-        $this->commandBus = $commandBus;
+        $this->application = $application;
     }
 
     protected function configure(): void
@@ -55,7 +55,7 @@ final class GeneratePayrollCliCommand extends Command
             $date
         );
 
-        $this->commandBus->dispatch($command);
+        $this->application->execute($command);
 
         $io->success('Payroll generated successfully, yo!');
 

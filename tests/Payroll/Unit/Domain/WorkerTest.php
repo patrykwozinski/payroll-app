@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Unit\Domain;
 
+use App\Common\Calendar\Clock\FixedClock;
 use App\Common\Calendar\Date;
 use App\Payroll\Domain\BonusCalculator\PercentageBonusCalculator;
 use App\Payroll\Domain\BonusCalculator\YearlyBonusCalculator;
 use App\Payroll\Domain\Money;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\WorkerId;
-use App\Tests\Common\TestDouble\StubClock;
 use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
 use App\Tests\Payroll\ObjectMother\Domain\MoneyMother;
 use App\Tests\Payroll\ObjectMother\Domain\PersonalDataMother;
@@ -27,8 +27,8 @@ final class WorkerTest extends TestCase
         $personalData = PersonalDataMother::random();
         $department = DepartmentMother::random();
         $salary = MoneyMother::random();
-        $expectedDate = new Date(new DateTimeImmutable('2020-02-02 12:30:00'));
-        $clock = StubClock::markFixed($expectedDate);
+        $fixedDate = new Date(new DateTimeImmutable('2020-02-02 12:30:00'));
+        $clock = FixedClock::on($fixedDate);
 
         // When
         $worker = Worker::hire($id, $personalData, $department, $salary, $clock->now());
@@ -70,7 +70,7 @@ final class WorkerTest extends TestCase
     {
         // Given
         $now = new Date(new DateTimeImmutable('2013-01-01'));
-        $afterYearsClock = StubClock::markFixed($now);
+        $afterYearsClock = FixedClock::on($now);
 
         $hiredAt = new Date(new DateTimeImmutable('2010-01-01'));
         $worker = WorkerMother::make()

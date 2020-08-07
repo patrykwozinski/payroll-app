@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\ObjectMother\Domain;
 
+use App\Common\Calendar\Clock\FixedClock;
 use App\Common\Calendar\Date;
 use App\Payroll\Domain\Department;
 use App\Payroll\Domain\Money;
 use App\Payroll\Domain\PersonalData;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\WorkerId;
-use App\Tests\Common\TestDouble\StubClock;
 use DateTimeImmutable;
 
 final class WorkerMother
@@ -29,7 +29,7 @@ final class WorkerMother
         $this->department = DepartmentMother::random();
         $this->personalData = PersonalDataMother::random();
         $this->salary = MoneyMother::random();
-        $this->hiredAt = StubClock::markFixed($expectedDate)->now();
+        $this->hiredAt = FixedClock::on($expectedDate)->now();
     }
 
     public static function make(): self

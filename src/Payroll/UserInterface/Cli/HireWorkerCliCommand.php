@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\UserInterface\Cli;
 
-use App\Common\CQRS\CommandBus;
+use App\Common\CQRS\Application;
 use App\Payroll\Application\Command\HireWorker\HireWorkerCommand;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
@@ -22,13 +22,13 @@ final class HireWorkerCliCommand extends Command
 
     protected static $defaultName = 'payroll:hire-worker';
 
-    private CommandBus $commandBus;
+    private Application $application;
 
-    public function __construct(CommandBus $commandBus)
+    public function __construct(Application $application)
     {
         parent::__construct(self::$defaultName);
 
-        $this->commandBus = $commandBus;
+        $this->application = $application;
     }
 
     protected function configure(): void
@@ -63,7 +63,7 @@ final class HireWorkerCliCommand extends Command
             (int) $salary
         );
 
-        $this->commandBus->dispatch($command);
+        $this->application->execute($command);
 
         $io->success(
             \sprintf('Worker hired! ID: %s', $workerId)
