@@ -62,6 +62,9 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "database:setup": [
+            "./bin/console doctrine:migrations:migrate"
+        ],
         "quality:cs:dry": [
             "./vendor/bin/php-cs-fixer --no-interaction --diff --dry-run -v fix"
         ],

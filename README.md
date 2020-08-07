@@ -8,6 +8,7 @@ You need a `Docker` with `docker-compose`, bro! 👌
 ```bash
 docker-compose build
 docker-compose up -d
+docker-compose exec payroll-app composer database:setup
 ```
 
 ### Static analysis
