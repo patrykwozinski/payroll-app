@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Payroll\Infrastructure\Doctrine\ReadModel;
+namespace App\Payroll\Infrastructure\Doctrine\DBAL\Application;
 
 use App\Payroll\Application\Query\Payroll;
 use App\Payroll\Application\Query\PayrollQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\UuidInterface;
 
-final class DoctrinePayrollQuery implements PayrollQuery
+final class DoctrineDBALPayrollQuery implements PayrollQuery
 {
     private EntityManagerInterface $entityManager;
 

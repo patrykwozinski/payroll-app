@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Payroll\Infrastructure\Doctrine\Persistence;
+namespace App\Payroll\Infrastructure\Doctrine\ORM\Domain;
 
 use App\Common\Calendar\Date;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\Workers;
 use Doctrine\ORM\EntityManagerInterface;
 
-final class DoctrineWorkers implements Workers
+final class DoctrineORMWorkers implements Workers
 {
     private EntityManagerInterface $entityManager;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Payroll\Infrastructure\Doctrine\Persistence;
+namespace App\Payroll\Infrastructure\Doctrine\ORM\Domain;
 
 use App\Payroll\Domain\Department;
 use App\Payroll\Domain\DepartmentId;
@@ -10,7 +10,7 @@ use App\Payroll\Domain\Departments;
 use App\Payroll\Domain\Error\DepartmentNotFound;
 use Doctrine\ORM\EntityManagerInterface;
 
-final class DoctrineDepartments implements Departments
+final class DoctrineORMDepartments implements Departments
 {
     private EntityManagerInterface $entityManager;
 

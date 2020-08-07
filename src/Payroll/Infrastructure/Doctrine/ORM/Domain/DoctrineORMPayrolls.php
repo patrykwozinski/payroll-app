@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Payroll\Infrastructure\Doctrine\Persistence;
+namespace App\Payroll\Infrastructure\Doctrine\ORM\Domain;
 
 use App\Payroll\Domain\Payroll;
 use App\Payroll\Domain\Payrolls;
 use Doctrine\ORM\EntityManagerInterface;
 
-final class DoctrinePayrolls implements Payrolls
+final class DoctrineORMPayrolls implements Payrolls
 {
     private EntityManagerInterface $entityManager;
 
