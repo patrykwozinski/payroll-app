@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Unit\Domain;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use App\Payroll\Domain\DepartmentId;
 use App\Payroll\Domain\Error\DepartmentNotFound;
 use App\Payroll\Domain\WorkerFactory;
 use App\Payroll\Domain\WorkerId;
 use App\Payroll\Infrastructure\InMemory\InMemoryDepartments;
-use App\Tests\Common\TestDouble\Domain\StubClock;
+use App\Tests\Common\TestDouble\StubClock;
 use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;

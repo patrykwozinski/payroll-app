@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain\Error;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use Exception;
 
 final class CannotGenerateEmptyPayroll extends Exception

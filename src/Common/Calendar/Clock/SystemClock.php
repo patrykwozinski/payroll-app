@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Domain\Clock;
+namespace App\Common\Calendar\Clock;
 
-use App\Common\Date;
-use App\Common\Domain\Clock;
+use App\Common\Calendar\Clock;
+use App\Common\Calendar\Date;
 use DateTimeImmutable;
 
 final class SystemClock implements Clock

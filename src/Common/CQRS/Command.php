@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Application;
+namespace App\Common\CQRS;
 
 interface Command
 {

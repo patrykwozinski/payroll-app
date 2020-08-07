@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\TestDouble\Domain;
+namespace App\Tests\Common\TestDouble;
 
-use App\Common\Domain\AggregateRoot;
-use App\Common\Domain\Event;
+use App\Common\EventDriven\AggregateRoot;
+use App\Common\EventDriven\Event;
 
 final class StubAggregateRoot extends AggregateRoot
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
-use App\Common\Domain\Clock;
+use App\Common\Calendar\Clock;
 
 final class WorkerFactory
 {

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\ObjectMother\Domain;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use App\Payroll\Domain\Department;
 use App\Payroll\Domain\Money;
 use App\Payroll\Domain\PersonalData;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\WorkerId;
-use App\Tests\Common\TestDouble\Domain\StubClock;
+use App\Tests\Common\TestDouble\StubClock;
 use DateTimeImmutable;
 
 final class WorkerMother

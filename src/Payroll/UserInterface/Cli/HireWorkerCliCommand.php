@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\UserInterface\Cli;
 
-use App\Common\Application\Command\Bus;
+use App\Common\CQRS\CommandBus;
 use App\Payroll\Application\Command\HireWorker\HireWorkerCommand;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
@@ -22,9 +22,9 @@ final class HireWorkerCliCommand extends Command
 
     protected static $defaultName = 'payroll:hire-worker';
 
-    private Bus $commandBus;
+    private CommandBus $commandBus;
 
-    public function __construct(Bus $commandBus)
+    public function __construct(CommandBus $commandBus)
     {
         parent::__construct(self::$defaultName);
 

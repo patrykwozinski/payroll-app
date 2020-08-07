@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Application\Command\HireWorker;
 
-use App\Common\Application\Command;
+use App\Common\CQRS\Command;
 
 final class HireWorkerCommand implements Command
 {

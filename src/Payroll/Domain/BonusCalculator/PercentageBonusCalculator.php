@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain\BonusCalculator;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use App\Payroll\Domain\BonusCalculator;
 use App\Payroll\Domain\BonusType;
 use App\Payroll\Domain\Money;

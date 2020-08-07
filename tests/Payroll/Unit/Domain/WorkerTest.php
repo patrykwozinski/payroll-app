@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Unit\Domain;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use App\Payroll\Domain\BonusCalculator\PercentageBonusCalculator;
 use App\Payroll\Domain\BonusCalculator\YearlyBonusCalculator;
-use App\Payroll\Domain\Event\WorkerHired;
 use App\Payroll\Domain\Money;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\WorkerId;
-use App\Tests\Common\TestDouble\Domain\StubClock;
+use App\Tests\Common\TestDouble\StubClock;
 use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
 use App\Tests\Payroll\ObjectMother\Domain\MoneyMother;
 use App\Tests\Payroll\ObjectMother\Domain\PersonalDataMother;
@@ -35,9 +34,7 @@ final class WorkerTest extends TestCase
         $worker = Worker::hire($id, $personalData, $department, $salary, $clock->now());
 
         // Then
-        $recordedEvent = $worker->pullEvents()[0];
-        $expectedEvent = new WorkerHired($id);
-        self::assertEquals($expectedEvent, $recordedEvent, 'Worker should be hired');
+        self::assertEquals($id, $worker->id(), 'Worker should be hired');
     }
 
     public function testSalaryBonusIsZeroWhenNoCalculators(): void

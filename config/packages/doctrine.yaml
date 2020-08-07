@@ -16,7 +16,7 @@ doctrine:
                     collate: utf8_unicode_ci
         types:
             # Common
-            custom_date: App\Common\Infrastructure\Doctrine\CustomType\CustomDateType
+            custom_date: App\Common\Calendar\Date\Type
             # Payroll
             worker_id: App\Payroll\Infrastructure\Doctrine\CustomType\WorkerIdType
             department_id: App\Payroll\Infrastructure\Doctrine\CustomType\DepartmentIdType

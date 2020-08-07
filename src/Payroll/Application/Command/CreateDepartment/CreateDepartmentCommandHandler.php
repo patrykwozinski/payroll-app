@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Payroll\Application\Command\CreateDepartment;
 
-use App\Common\Application\Command\Handler;
+use App\Common\CQRS\CommandHandler;
 use App\Payroll\Domain\DepartmentFactory;
 use App\Payroll\Domain\DepartmentId;
 use App\Payroll\Domain\Departments;
 
-final class CreateDepartmentHandler implements Handler
+final class CreateDepartmentCommandHandler implements CommandHandler
 {
     private DepartmentFactory $departmentFactory;
     private Departments $departments;

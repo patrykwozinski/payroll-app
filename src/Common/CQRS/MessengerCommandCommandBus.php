@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Infrastructure\Messenger;
+namespace App\Common\CQRS;
 
-use App\Common\Application\Command;
-use App\Common\Application\Command\Bus;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final class MessengerCommandBus implements Bus
+final class MessengerCommandCommandBus implements CommandBus
 {
     private MessageBusInterface $commandBus;
 

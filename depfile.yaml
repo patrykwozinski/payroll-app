@@ -3,19 +3,6 @@ paths:
 exclude_files:
     - .*test.*
 layers:
-    -   name: common_application
-        collectors:
-            -   type: directory
-                regex: src/Common/Application
-    -   name: common_domain
-        collectors:
-            -   type: directory
-                regex: src/Common/Domain
-    -   name: common_infrastructure
-        collectors:
-            -   type: directory
-                regex: src/Common/Infrastructure
-
     -   name: payroll_application
         collectors:
             -   type: directory
@@ -34,15 +21,7 @@ layers:
                 regex: src/Payroll/UserInterface
 
 ruleset:
-    common_infrastructure:
-        - common_application
-        - common_domain
-    common_application:
-        - common_domain
-    common_domain: ~
-
     payroll_user_interface:
-        - common_application
         - payroll_application
     payroll_infrastructure:
         - common_infrastructure

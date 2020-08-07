@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Payroll\Application\Command\GeneratePayroll;
 
-use App\Common\Application\Command;
-use App\Common\Date;
+use App\Common\Calendar\Date;
+use App\Common\CQRS\Command;
 
 final class GeneratePayrollCommand implements Command
 {

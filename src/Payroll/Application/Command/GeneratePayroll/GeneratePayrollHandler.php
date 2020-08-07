@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Payroll\Application\Command\GeneratePayroll;
 
-use App\Common\Application\Command\Handler;
+use App\Common\CQRS\CommandHandler;
 use App\Payroll\Domain\PayrollGenerator;
 use App\Payroll\Domain\PayrollId;
 use App\Payroll\Domain\Payrolls;
 
-final class GeneratePayrollHandler implements Handler
+final class GeneratePayrollHandler implements CommandHandler
 {
     private PayrollGenerator $payrollGenerator;
     private Payrolls $payrolls;

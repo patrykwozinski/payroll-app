@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\Infrastructure\Doctrine\Persistence;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use App\Payroll\Domain\Worker;
 use App\Payroll\Domain\Workers;
 use Doctrine\ORM\EntityManagerInterface;

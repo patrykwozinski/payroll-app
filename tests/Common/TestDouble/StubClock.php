@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\TestDouble\Domain;
+namespace App\Tests\Common\TestDouble;
 
-use App\Common\Date;
-use App\Common\Domain\Clock;
+use App\Common\Calendar\Clock;
+use App\Common\Calendar\Date;
 
 final class StubClock implements Clock
 {

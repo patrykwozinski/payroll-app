@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
-use App\Common\Date;
-use App\Common\Domain\AggregateRoot;
+use App\Common\Calendar\Date;
 
-final class Payroll extends AggregateRoot
+final class Payroll
 {
     private PayrollId $id;
     private Date $generatedAt;

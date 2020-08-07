@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Unit\Domain;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use App\Payroll\Domain\BonusCalculator\PercentageBonusCalculator;
 use App\Payroll\Domain\BonusCalculator\YearlyBonusCalculator;
 use App\Payroll\Domain\Error\CannotGenerateEmptyPayroll;
 use App\Payroll\Domain\PayrollGenerator;
 use App\Payroll\Domain\PayrollId;
 use App\Payroll\Infrastructure\InMemory\InMemoryWorkers;
-use App\Tests\Common\TestDouble\Domain\StubClock;
+use App\Tests\Common\TestDouble\StubClock;
 use App\Tests\Payroll\ObjectMother\Domain\WorkerMother;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;

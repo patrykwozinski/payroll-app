@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\Unit\Infrastructure\Messenger;
+namespace App\Tests\Common\Unit\CQRS;
 
-use App\Common\Application\Command;
-use App\Common\Infrastructure\Messenger\MessengerCommandBus;
+use App\Common\CQRS\Command;
+use App\Common\CQRS\MessengerCommandCommandBus;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -13,12 +13,12 @@ use Symfony\Component\Messenger\MessageBusInterface;
 final class MessengerCommandBusTest extends TestCase
 {
     private MessageBusInterface $symfonyMessageBus;
-    private MessengerCommandBus $commandBus;
+    private MessengerCommandCommandBus $commandBus;
 
     protected function setUp(): void
     {
         $this->symfonyMessageBus = $this->assembleSymfonyMessageBus();
-        $this->commandBus = new MessengerCommandBus($this->symfonyMessageBus);
+        $this->commandBus = new MessengerCommandCommandBus($this->symfonyMessageBus);
     }
 
     public function testUsesMessageBusWhenDispatching(): void

@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
-use App\Common\Date;
-use App\Common\Domain\AggregateRoot;
-use App\Payroll\Domain\Event\WorkerHired;
+use App\Common\Calendar\Date;
 
-final class Worker extends AggregateRoot
+final class Worker
 {
     private WorkerId $id;
     private PersonalData $personalData;
@@ -27,10 +25,7 @@ final class Worker extends AggregateRoot
 
     public static function hire(WorkerId $id, PersonalData $personalData, Department $department, Money $salary, Date $hiredAt): self
     {
-        $worker = new self($id, $personalData, $department, $salary, $hiredAt);
-        $worker->recordThat(new WorkerHired($id));
-
-        return $worker;
+        return new self($id, $personalData, $department, $salary, $hiredAt);
     }
 
     public function id(): WorkerId

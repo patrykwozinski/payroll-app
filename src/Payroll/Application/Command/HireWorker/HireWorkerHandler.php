@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Payroll\Application\Command\HireWorker;
 
-use App\Common\Application\Command\Handler;
+use App\Common\CQRS\CommandHandler;
 use App\Payroll\Domain\DepartmentId;
 use App\Payroll\Domain\WorkerFactory;
 use App\Payroll\Domain\WorkerId;
 use App\Payroll\Domain\Workers;
 
-final class HireWorkerHandler implements Handler
+final class HireWorkerHandler implements CommandHandler
 {
     private WorkerFactory $workerFactory;
     private Workers $workers;

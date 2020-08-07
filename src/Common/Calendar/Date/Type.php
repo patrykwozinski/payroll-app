@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Infrastructure\Doctrine\CustomType;
+namespace App\Common\Calendar\Date;
 
-use App\Common\Date;
+use App\Common\Calendar\Date;
 use DateTimeImmutable;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateType;
 
-final class CustomDateType extends DateType
+final class Type extends DateType
 {
     private const NAME = 'custom_date';
 

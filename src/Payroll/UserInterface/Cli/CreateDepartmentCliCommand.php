@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Payroll\UserInterface\Cli;
 
-use App\Common\Application\Command\Bus;
+use App\Common\CQRS\CommandBus;
 use App\Payroll\Application\Command\CreateDepartment\CreateDepartmentCommand;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
@@ -21,9 +21,9 @@ final class CreateDepartmentCliCommand extends Command
 
     protected static $defaultName = 'payroll:create-department';
 
-    private Bus $commandBus;
+    private CommandBus $commandBus;
 
-    public function __construct(Bus $commandBus)
+    public function __construct(CommandBus $commandBus)
     {
         parent::__construct(self::$defaultName);
 

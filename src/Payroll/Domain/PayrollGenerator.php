@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Payroll\Domain;
 
-use App\Common\Date;
-use App\Common\Domain\Clock;
+use App\Common\Calendar\Clock;
+use App\Common\Calendar\Date;
 use App\Payroll\Domain\BonusCalculator\PercentageBonusCalculator;
 use App\Payroll\Domain\BonusCalculator\YearlyBonusCalculator;
 use App\Payroll\Domain\Error\CannotGenerateEmptyPayroll;
