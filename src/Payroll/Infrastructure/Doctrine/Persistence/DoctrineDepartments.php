@@ -12,7 +12,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class DoctrineDepartments implements Departments
 {
-    /** @var EntityManagerInterface */
     private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
