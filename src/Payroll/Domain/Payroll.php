@@ -32,6 +32,6 @@ final class Payroll extends AggregateRoot
 
     public function isEmpty(): bool
     {
-        return 0 === \count($this->records);
+        return empty($this->records);
     }
 }

@@ -20,7 +20,7 @@ final class DoctrineDepartments implements Departments
         $this->entityManager = $entityManager;
     }
 
-    public function oneById(DepartmentId $departmentId): Department
+    public function ofId(DepartmentId $departmentId): Department
     {
         /** @var Department|null $department */
         $department = $this->entityManager->find(Department::class, $departmentId);

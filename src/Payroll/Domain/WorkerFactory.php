@@ -19,7 +19,7 @@ final class WorkerFactory
 
     public function create(WorkerId $workerId, DepartmentId $departmentId, string $firstName, string $lastName, int $salary): Worker
     {
-        $department = $this->departments->oneById($departmentId);
+        $department = $this->departments->ofId($departmentId);
 
         return Worker::hire(
             $workerId,

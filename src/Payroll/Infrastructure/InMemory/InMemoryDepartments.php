@@ -14,7 +14,7 @@ final class InMemoryDepartments implements Departments
     /** @var Department[] */
     private array $departments = [];
 
-    public function oneById(DepartmentId $departmentId): Department
+    public function ofId(DepartmentId $departmentId): Department
     {
         $department = $this->departments[(string) $departmentId] ?? null;
 

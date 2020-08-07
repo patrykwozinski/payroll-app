@@ -9,7 +9,7 @@ use App\Payroll\Domain\Error\DepartmentNotFound;
 interface Departments
 {
     /** @throws DepartmentNotFound */
-    public function oneById(DepartmentId $departmentId): Department;
+    public function ofId(DepartmentId $departmentId): Department;
 
     public function add(Department $department): void;
 

@@ -6,3 +6,5 @@ parameters:
             - %currentWorkingDirectory%/src/Payroll/Infrastructure/Doctrine/CustomType
             - %currentWorkingDirectory%/src/Payroll/Infrastructure/Doctrine/Migrations
     checkMissingIterableValueType: false
+    ignoreErrors:
+    		- '#Cannot access an offset on iterable#'
