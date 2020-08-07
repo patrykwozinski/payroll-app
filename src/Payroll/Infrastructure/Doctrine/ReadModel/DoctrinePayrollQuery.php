@@ -7,6 +7,7 @@ namespace App\Payroll\Infrastructure\Doctrine\ReadModel;
 use App\Payroll\Application\Query\Payroll;
 use App\Payroll\Application\Query\PayrollQuery;
 use Doctrine\ORM\EntityManagerInterface;
+use Ramsey\Uuid\UuidInterface;
 
 final class DoctrinePayrollQuery implements PayrollQuery
 {
@@ -17,7 +18,7 @@ final class DoctrinePayrollQuery implements PayrollQuery
         $this->entityManager = $entityManager;
     }
 
-    public function ofId(string $payrollId): Payroll
+    public function ofId(UuidInterface $payrollId): Payroll
     {
         return new Payroll();
     }
