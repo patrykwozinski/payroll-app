@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\TestDouble\CQRS;
+namespace App\Tests\Common\CQRS\TestDouble;
 
 use App\Common\CQRS\Command;
 use App\Common\CQRS\CommandBus;

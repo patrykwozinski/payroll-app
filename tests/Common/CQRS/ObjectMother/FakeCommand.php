@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\ObjectMother\CQRS;
+namespace App\Tests\Common\CQRS\ObjectMother;
 
 use App\Common\CQRS\Command;
 

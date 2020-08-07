@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\Unit\CQRS;
+namespace App\Tests\Common\CQRS\Unit;
 
 use App\Common\CQRS\Command;
 use App\Common\CQRS\MessengerCommandCommandBus;
-use App\Tests\Common\ObjectMother\CQRS\FakeCommand;
+use App\Tests\Common\CQRS\ObjectMother\FakeCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;

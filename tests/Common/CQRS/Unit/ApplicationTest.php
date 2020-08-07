@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Common\Unit\CQRS;
+namespace App\Tests\Common\CQRS\Unit;
 
 use App\Common\Calendar\Clock\FixedClock;
 use App\Common\Calendar\Date;
 use App\Common\CQRS\Application;
 use App\Common\CQRS\Exception\CommandException;
-use App\Tests\Common\ObjectMother\CQRS\FakeCommand;
-use App\Tests\Common\TestDouble\CQRS\SpyCommandBus;
+use App\Tests\Common\CQRS\ObjectMother\FakeCommand;
+use App\Tests\Common\CQRS\TestDouble\SpyCommandBus;
 use DateTimeImmutable;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
