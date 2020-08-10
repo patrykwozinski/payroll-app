@@ -22,6 +22,8 @@ final class ShowPayrollCliCommand extends Command
     private const OPTION_PAYROLL_ID = 'payroll-id';
     private const OPTION_SORT_FIELD = 'sort-field';
     private const OPTION_SORT_DIRECTION = 'sort-direction';
+    private const OPTION_FILTER_FIELD = 'filter-field';
+    private const OPTION_FILTER_VALUE = 'filter-value';
 
     protected static $defaultName = 'payroll:show';
 
@@ -39,8 +41,10 @@ final class ShowPayrollCliCommand extends Command
         $this
             ->setDescription('Shows payroll by given ID')
             ->addArgument(self::OPTION_PAYROLL_ID, InputArgument::REQUIRED)
-            ->addOption(self::OPTION_SORT_FIELD, 'sf', InputOption::VALUE_OPTIONAL)
-            ->addOption(self::OPTION_SORT_DIRECTION, 'sd', InputOption::VALUE_OPTIONAL);
+            ->addOption(self::OPTION_SORT_FIELD, null, InputOption::VALUE_OPTIONAL)
+            ->addOption(self::OPTION_SORT_DIRECTION, null, InputOption::VALUE_OPTIONAL)
+            ->addOption(self::OPTION_FILTER_FIELD, null, InputOption::VALUE_OPTIONAL)
+            ->addOption(self::OPTION_FILTER_VALUE, null, InputOption::VALUE_OPTIONAL);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -57,13 +61,21 @@ final class ShowPayrollCliCommand extends Command
         $sortingDirection = $input->getOption(self::OPTION_SORT_DIRECTION);
 
         $sorter = PayrollSorter::default();
-
         if ($sortingField && $sortingDirection) {
             $sorter = new PayrollSorter($sortingField, $sortingDirection);
         }
 
         $filter = PayrollFilter::create()
             ->withSorter($sorter);
+
+        /** @var string|null $filteringField */
+        $filteringField = $input->getOption(self::OPTION_FILTER_FIELD);
+        /** @var string|null $filteringValue */
+        $filteringValue = $input->getOption(self::OPTION_FILTER_VALUE);
+
+        if (null !== $filteringField && null !== $filteringValue) {
+            $filter->withDefinition($filteringField, $filteringValue);
+        }
 
         /** @var PayrollQuery $payrollQuery */
         $payrollQuery = $this->application->query(PayrollQuery::class);

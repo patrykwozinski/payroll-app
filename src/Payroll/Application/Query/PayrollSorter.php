@@ -25,10 +25,10 @@ final class PayrollSorter
 
     public function __construct(string $field, string $direction)
     {
-        $field = strtolower($field);
-        Assertion::inArray($field, self::ALLOWED_FIELDS, 'Sorting is possible using fields: ' . implode(', ', self::ALLOWED_FIELDS));
+        $field = \strtolower($field);
+        Assertion::inArray($field, self::ALLOWED_FIELDS, 'Sorting is possible using fields: ' . \implode(', ', self::ALLOWED_FIELDS));
 
-        $direction = strtoupper($direction);
+        $direction = \strtoupper($direction);
         Assertion::inArray($direction, self::ALLOWED_DIRECTIONS, 'Sorting is possible using only DESC and ASC');
 
         $this->direction = $direction;
@@ -42,7 +42,7 @@ final class PayrollSorter
 
     public function isDefault(): bool
     {
-        return $this->field === 'id';
+        return 'id' === $this->field;
     }
 
     public function direction(): string

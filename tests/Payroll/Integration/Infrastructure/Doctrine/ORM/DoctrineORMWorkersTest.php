@@ -42,7 +42,7 @@ final class DoctrineORMWorkersTest extends KernelTestCase
         $this->repository->add($worker);
 
         /** @var Worker $existing */
-        $existing = $this->em->getRepository(Worker::class)->find((string)$worker->id());
+        $existing = $this->em->getRepository(Worker::class)->find((string) $worker->id());
 
         self::assertEquals($worker->id(), $existing->id());
     }

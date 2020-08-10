@@ -35,7 +35,7 @@ final class DoctrineORMPayrollsTest extends KernelTestCase
         $this->repository->add($payroll);
 
         /** @var Payroll $existing */
-        $existing = $this->em->getRepository(Payroll::class)->find((string)$payroll->id());
+        $existing = $this->em->getRepository(Payroll::class)->find((string) $payroll->id());
 
         self::assertEquals($payroll->id(), $existing->id());
     }

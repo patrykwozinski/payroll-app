@@ -43,7 +43,14 @@ final class DoctrineDBALPayrollQuery implements PayrollQuery
             ->from('payroll', 'p')
             ->innerJoin('p', 'payroll_record', 'pr', 'p.id = pr.payroll_id')
             ->innerJoin('pr', 'department', 'd', 'pr.department_id = d.id')
-            ->where('p.id = :payrollId');
+            ->where('p.id = :payrollId')
+            ->setParameter('payrollId', (string)$payrollId);
+
+        if ($filter->isDefined()) {
+            $query
+                ->andWhere($this->mapField($filter->field()) . ' = :value')
+                ->setParameter('value', $filter->value());
+        }
 
         if ($filter->hasSorter()) {
             $query->orderBy($filter->sorter()->field(), $filter->sorter()->direction());
@@ -51,7 +58,6 @@ final class DoctrineDBALPayrollQuery implements PayrollQuery
 
         /** @var ResultStatement $statement */
         $query = $query
-            ->setParameter('payrollId', (string)$payrollId)
             ->execute();
 
         $rawPayroll = $query->fetchAll();
@@ -84,5 +90,14 @@ final class DoctrineDBALPayrollQuery implements PayrollQuery
             new Date(new DateTimeImmutable($rawPayroll[0]['generated_at'])),
             $rows
         );
+    }
+
+    private function mapField(string $field): string
+    {
+        $map = [
+            'department_name' => 'd.name',
+        ];
+
+        return $map[$field] ?? $field;
     }
 }
