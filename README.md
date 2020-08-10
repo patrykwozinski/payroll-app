@@ -25,7 +25,8 @@ docker-compose exec payroll-app composer tests:all
 docker-compose exec payroll-app composer tests:unit
 docker-compose exec payroll-app composer tests:functional
 ```
-In the future 
+
+![how it works](https://i.imgur.com/pchWlHM.png)
 
 
 ## Business part
