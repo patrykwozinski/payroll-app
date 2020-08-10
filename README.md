@@ -40,7 +40,6 @@ docker-compose exec payroll-app bin/console payroll:hire-worker <first name> <la
 docker-compose exec payroll-app bin/console payroll:hire-worker "Jon" "Snow" "91587124-1ed0-4550-af23-a7fe18acf2d3" "5000"
 ```
 In the result should be UUID of a hired worker.
-I'd like to add more types of tests.
 
 ### How to generate a payroll?
 ```bash
