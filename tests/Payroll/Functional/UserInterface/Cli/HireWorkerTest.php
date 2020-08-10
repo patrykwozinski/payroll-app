@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Functional\UserInterface\Cli;
 
+use App\Payroll\Domain\Departments;
+use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
 
-final class CreateDepartmentTest extends KernelTestCase
+final class HireWorkerTest extends KernelTestCase
 {
     private Command $createDepartment;
     private CommandTester $commandTester;
@@ -19,20 +21,31 @@ final class CreateDepartmentTest extends KernelTestCase
         $kernel = static::bootKernel();
         $application = new Application($kernel);
 
-        $this->createDepartment = $application->find('payroll:create-department');
+        $this->createDepartment = $application->find('payroll:hire-worker');
         $this->commandTester = new CommandTester($this->createDepartment);
     }
 
-    public function testDepartmentCreated(): void
+    public function testWorkerHiredSuccess(): void
     {
+        $this->ensureDepartmentExists();
+
         $this->commandTester->execute([
             'command' => $this->createDepartment->getName(),
-            'name' => 'IT operations',
-            'bonus-type' => 'Yearly',
-            'bonus-value' => 700,
+            'first-name' => 'Mick',
+            'last-name' => 'Mayers',
+            'department-id' => DepartmentMother::ID,
+            'salary' => 2500,
         ]);
         $output = $this->commandTester->getDisplay();
 
-        self::assertStringContainsString('Created department!', $output);
+        self::assertStringContainsString('Worker hired!', $output);
+    }
+
+    private function ensureDepartmentExists(): void
+    {
+        /** @var Departments $departments */
+        $departments = self::$container->get(Departments::class);
+
+        $departments->add(DepartmentMother::random());
     }
 }

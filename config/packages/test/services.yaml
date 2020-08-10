@@ -1,0 +1,4 @@
+services:
+  App\Payroll\Domain\Workers: '@App\Payroll\Infrastructure\InMemory\InMemoryWorkers'
+  App\Payroll\Domain\Departments: '@App\Payroll\Infrastructure\InMemory\InMemoryDepartments'
+  App\Payroll\Domain\Payrolls: '@App\Payroll\Infrastructure\InMemory\InMemoryPayrolls'
