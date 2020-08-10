@@ -11,7 +11,7 @@ use App\Payroll\Domain\DepartmentId;
 final class DepartmentMother
 {
     public const ID = '476cc55f-02ba-4f9f-9e12-86ebfc1094a5';
-    public const NAME = 'Human Resources';
+    public const NAME = 'IT and operations';
 
     public static function random(): Department
     {
