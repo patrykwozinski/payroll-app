@@ -36,6 +36,8 @@ final class BonusType
     /** @throws BonusTypeNotSupported */
     public static function fromScalars(string $type, int $value): self
     {
+        $type = \strtolower($type);
+
         if (self::TYPE_YEARLY !== $type && self::TYPE_PERCENTAGE !== $type) {
             throw BonusTypeNotSupported::whenIs($type);
         }

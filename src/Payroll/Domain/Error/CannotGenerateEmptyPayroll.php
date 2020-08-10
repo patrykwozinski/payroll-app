@@ -11,7 +11,7 @@ final class CannotGenerateEmptyPayroll extends Exception
 {
     public static function forDate(Date $date): self
     {
-        $message = \sprintf('Can not generate payroll report for specific date: %s', $date);
+        $message = \sprintf('Can not generate payroll report for specific date (no workers): %s', $date);
 
         return new self($message);
     }

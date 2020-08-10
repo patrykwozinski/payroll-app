@@ -20,6 +20,10 @@
             <directory>tests/Common/*/Unit</directory>
             <directory>tests/Payroll/Unit</directory>
         </testsuite>
+
+        <testsuite name="functional">
+            <directory>tests/Payroll/Functional</directory>
+        </testsuite>
     </testsuites>
 
     <filter>
@@ -27,6 +31,10 @@
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
+
+    <extensions>
+        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+    </extensions>
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>

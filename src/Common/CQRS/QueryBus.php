@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Common\CQRS;
 
 use App\Common\CQRS\Exception\QueryException;
-use Assert\Assertion;
 
 final class QueryBus
 {
@@ -14,8 +13,6 @@ final class QueryBus
 
     public function __construct(iterable $queries)
     {
-        Assertion::allIsInstanceOf((array) $queries, Query::class);
-
         $this->queries = $queries;
     }
 
