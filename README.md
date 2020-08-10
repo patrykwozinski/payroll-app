@@ -47,5 +47,5 @@ I'd like to add more types of tests.
 ### How to generate a payroll?
 ```bash
 docker-compose exec payroll-app bin/console payroll:generate <date>
-docker-compose exec payroll-app bin/console payroll:generate "2020-01-04"
+docker-compose exec payroll-app bin/console payroll:generate "2021-01-01"
 ```
