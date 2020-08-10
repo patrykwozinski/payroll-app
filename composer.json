@@ -20,7 +20,10 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^6.3",
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "friendsofphp/php-cs-fixer": "^2.16",
+        "nelmio/alice": "^3.7",
         "phpstan/phpstan": "^0.12.36",
         "sensiolabs-de/deptrac-shim": "^0.8.2",
         "symfony/phpunit-bridge": "^5.1"
@@ -83,10 +86,14 @@
             "@quality:architecture"
         ],
         "tests:all": [
-            "@tests:unit"
+            "@tests:unit",
+            "@tests:functional"
         ],
         "tests:unit": [
-            "bin/phpunit --testsuite=unit --testdox"
+            "APP_ENV=test bin/phpunit --testsuite=unit --testdox"
+        ],
+        "tests:functional": [
+            "APP_ENV=test bin/phpunit --testsuite=functional --testdox"
         ]
     },
     "conflict": {
