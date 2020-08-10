@@ -9,5 +9,5 @@ use Ramsey\Uuid\UuidInterface;
 
 interface PayrollQuery extends Query
 {
-    public function ofId(UuidInterface $payrollId): ?PayrollView;
+    public function find(UuidInterface $payrollId, PayrollFilter $filter): ?PayrollView;
 }

@@ -12,8 +12,9 @@ final class PayrollRecordView
     private int $salary;
     private int $salaryBonus;
     private string $bonusType;
+    private int $totalSalary;
 
-    public function __construct(string $firstName, string $lastName, string $department, int $salary, int $salaryBonus, string $bonusType)
+    public function __construct(string $firstName, string $lastName, string $department, int $salary, int $salaryBonus, string $bonusType, int $totalSalary)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -21,6 +22,7 @@ final class PayrollRecordView
         $this->salary = $salary;
         $this->salaryBonus = $salaryBonus;
         $this->bonusType = $bonusType;
+        $this->totalSalary = $totalSalary;
     }
 
     public function firstName(): string
@@ -51,5 +53,10 @@ final class PayrollRecordView
     public function bonusType(): string
     {
         return $this->bonusType;
+    }
+
+    public function totalSalary(): int
+    {
+        return $this->totalSalary;
     }
 }
