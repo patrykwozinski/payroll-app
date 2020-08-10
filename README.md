@@ -23,6 +23,7 @@ You can run tests via:
 docker-compose exec payroll-app composer tests:all
 # OR
 docker-compose exec payroll-app composer tests:unit
+docker-compose exec payroll-app composer tests:integration
 docker-compose exec payroll-app composer tests:functional
 ```
 In the future 
