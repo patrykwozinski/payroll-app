@@ -61,7 +61,7 @@ final class GeneratePayrollCliCommand extends Command
         $this->application->execute($command);
 
         $io->success(
-            sprintf('Payroll generated successfully. ID: %s', $payrollId)
+            \sprintf('Payroll generated successfully. ID: %s', $payrollId)
         );
 
         return 0;

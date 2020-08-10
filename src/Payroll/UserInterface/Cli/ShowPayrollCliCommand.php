@@ -65,7 +65,7 @@ final class ShowPayrollCliCommand extends Command
             ];
         }
 
-        $io->section(sprintf('Payroll ID %s generated at: %s', $payroll->id(), $payroll->generatedAt()));
+        $io->section(\sprintf('Payroll ID %s generated at: %s', $payroll->id(), $payroll->generatedAt()));
         $table = new Table($output);
         $table
             ->setHeaders(['First name', 'Last name', 'Department', 'Salary', 'Salary bonus', 'Bonus type'])

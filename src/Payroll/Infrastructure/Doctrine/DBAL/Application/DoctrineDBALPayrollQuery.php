@@ -10,6 +10,7 @@ use App\Payroll\Application\Query\PayrollRecordView;
 use App\Payroll\Application\Query\PayrollView;
 use DateTimeImmutable;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Driver\ResultStatement;
 use Ramsey\Uuid\UuidInterface;
 
 final class DoctrineDBALPayrollQuery implements PayrollQuery
@@ -23,7 +24,8 @@ final class DoctrineDBALPayrollQuery implements PayrollQuery
 
     public function ofId(UuidInterface $payrollId): ?PayrollView
     {
-        $rawPayroll = $this->connection
+        /** @var ResultStatement $statement */
+        $statement = $this->connection
             ->createQueryBuilder()
             ->select([
                 'p.id',
@@ -39,9 +41,10 @@ final class DoctrineDBALPayrollQuery implements PayrollQuery
             ->innerJoin('p', 'payroll_record', 'pr', 'p.id = pr.payroll_id')
             ->innerJoin('pr', 'department', 'd', 'pr.department_id = d.id')
             ->where('p.id = :payrollId')
-            ->setParameter('payrollId', (string)$payrollId)
-            ->execute()
-            ->fetchAll();
+            ->setParameter('payrollId', (string) $payrollId)
+            ->execute();
+
+        $rawPayroll = $statement->fetchAll();
 
         if (empty($rawPayroll)) {
             return null;
@@ -59,8 +62,8 @@ final class DoctrineDBALPayrollQuery implements PayrollQuery
                 $rawRecord['worker_first_name'],
                 $rawRecord['worker_last_name'],
                 $rawRecord['department_name'],
-                (int)$rawRecord['salary'],
-                (int)$rawRecord['salary_bonus'],
+                (int) $rawRecord['salary'],
+                (int) $rawRecord['salary_bonus'],
                 $rawRecord['department_bonus_type']
             );
         }

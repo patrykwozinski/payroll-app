@@ -6,7 +6,7 @@ namespace App\Tests\Common\CQRS\Unit;
 
 use App\Common\CQRS\Command;
 use App\Common\CQRS\MessengerCommandCommandBus;
-use App\Tests\Common\CQRS\ObjectMother\FakeCommand;
+use App\Tests\Common\CQRS\TestDouble\DummyCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -24,7 +24,7 @@ final class MessengerCommandBusTest extends TestCase
 
     public function testUsesMessageBusWhenDispatching(): void
     {
-        $command = new FakeCommand();
+        $command = new DummyCommand();
         $this->commandBus->dispatch($command);
 
         self::assertSame($command, $this->symfonyMessageBus->dispatchedCommand());

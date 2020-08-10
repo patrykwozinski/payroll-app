@@ -39,7 +39,7 @@ final class Application
                     'exception' => \get_class($exception),
                     'message' => $exception->getMessage(),
                     'trace' => $exception->getTraceAsString(),
-                    'occurred_at' => (string)$this->clock->now(),
+                    'occurred_at' => (string) $this->clock->now(),
                 ]
             );
 
