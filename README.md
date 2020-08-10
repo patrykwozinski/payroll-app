@@ -49,3 +49,9 @@ I'd like to add more types of tests.
 docker-compose exec payroll-app bin/console payroll:generate <date>
 docker-compose exec payroll-app bin/console payroll:generate "2021-01-01"
 ```
+
+### How to show a payroll?
+```bash
+docker-compose exec payroll-app bin/console payroll:show <uuid> <OPTION --sort-field> <OPTION --sort-direction> <OPTION --filter-field> <OPTION --filter-value>
+docker-compose exec payroll-app bin/console payroll:show 0e43d135-8bad-48d1-9e72-b6025d1c6774 --sort-field=total_salary --sort-direction=asc --filter-field=department_name --filter-value="Human Resources"
+```
