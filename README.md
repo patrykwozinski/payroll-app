@@ -26,9 +26,6 @@ docker-compose exec payroll-app composer tests:unit
 docker-compose exec payroll-app composer tests:functional
 ```
 
-![how it works](https://i.imgur.com/pchWlHM.png)
-
-
 ## Business part
 ### How to create department?
 ```bash
@@ -56,3 +53,5 @@ docker-compose exec payroll-app bin/console payroll:generate "2021-01-01"
 docker-compose exec payroll-app bin/console payroll:show <uuid> <OPTION --sort-field> <OPTION --sort-direction> <OPTION --filter-field> <OPTION --filter-value>
 docker-compose exec payroll-app bin/console payroll:show 0e43d135-8bad-48d1-9e72-b6025d1c6774 --sort-field=total_salary --sort-direction=asc --filter-field=department_name --filter-value="Human Resources"
 ```
+
+![how it works](https://i.imgur.com/pchWlHM.png)
