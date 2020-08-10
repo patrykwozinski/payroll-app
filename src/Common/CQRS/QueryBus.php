@@ -9,9 +9,9 @@ use App\Common\CQRS\Exception\QueryException;
 final class QueryBus
 {
     /** @var Query[] */
-    private array $queries;
+    private iterable $queries;
 
-    public function __construct(Query ...$queries)
+    public function __construct(iterable $queries)
     {
         $this->queries = $queries;
     }

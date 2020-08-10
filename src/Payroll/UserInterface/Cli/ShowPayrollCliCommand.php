@@ -8,6 +8,7 @@ use App\Common\CQRS\Application;
 use App\Payroll\Application\Query\PayrollQuery;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -44,9 +45,32 @@ final class ShowPayrollCliCommand extends Command
 
         /** @var PayrollQuery $payrollQuery */
         $payrollQuery = $this->application->query(PayrollQuery::class);
-        $payrollQuery->ofId($payrollId);
+        $payroll = $payrollQuery->ofId($payrollId);
 
-        $io->success('OK');
+        if (null === $payroll) {
+            $io->error('Payroll with given ID not found');
+
+            return 1;
+        }
+
+        $tableRows = [];
+        foreach ($payroll->records() as $record) {
+            $tableRows[] = [
+                $record->firstName(),
+                $record->lastName(),
+                $record->department(),
+                $record->salary(),
+                $record->salaryBonus(),
+                $record->bonusType(),
+            ];
+        }
+
+        $io->section(sprintf('Payroll ID %s generated at: %s', $payroll->id(), $payroll->generatedAt()));
+        $table = new Table($output);
+        $table
+            ->setHeaders(['First name', 'Last name', 'Department', 'Salary', 'Salary bonus', 'Bonus type'])
+            ->setRows($tableRows);
+        $table->render();
 
         return 0;
     }
