@@ -19,7 +19,7 @@ final class InMemoryWorkers implements Workers
     }
 
     /** @return Worker[] */
-    public function workingUntil(Date $date): array
+    public function workingInDate(Date $date): array
     {
         return $this->workers;
     }

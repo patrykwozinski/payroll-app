@@ -21,6 +21,10 @@
             <directory>tests/Payroll/Unit</directory>
         </testsuite>
 
+        <testsuite name="integration">
+            <directory>tests/Payroll/Integration</directory>
+        </testsuite>
+
         <testsuite name="functional">
             <directory>tests/Payroll/Functional</directory>
         </testsuite>
@@ -33,7 +37,7 @@
     </filter>
 
     <extensions>
-        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension"/>
     </extensions>
 
     <listeners>

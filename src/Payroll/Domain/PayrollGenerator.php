@@ -30,7 +30,7 @@ final class PayrollGenerator
     {
         $payroll = Payroll::generate($payrollId, $this->clock->now());
 
-        foreach ($this->workers->workingUntil($date) as $worker) {
+        foreach ($this->workers->workingInDate($date) as $worker) {
             $salaryBonus = $worker->salaryBonus(
                 $this->yearlyBonusCalculator,
                 $this->percentageBonusCalculator

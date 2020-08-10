@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Payroll\Functional\UserInterface\Cli;
 
-use App\Payroll\Domain\Department;
 use App\Payroll\Domain\Departments;
 use App\Payroll\Domain\Workers;
 use App\Tests\Payroll\ObjectMother\Domain\DepartmentMother;

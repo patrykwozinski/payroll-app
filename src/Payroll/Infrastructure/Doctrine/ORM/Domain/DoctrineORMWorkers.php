@@ -24,13 +24,15 @@ final class DoctrineORMWorkers implements Workers
         $this->entityManager->flush();
     }
 
-    public function workingUntil(Date $date): array
+    public function workingInDate(Date $date): array
     {
         return $this->entityManager
             ->createQueryBuilder()
             ->select('w')
             ->from(Worker::class, 'w')
             ->join('w.department', 'd')
+            ->where('w.hiredAt <= :hiredAt')
+            ->setParameter('hiredAt', (string) $date)
             ->getQuery()
             ->getResult();
     }

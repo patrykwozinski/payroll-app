@@ -87,10 +87,14 @@
         ],
         "tests:all": [
             "@tests:unit",
+            "@tests:integration",
             "@tests:functional"
         ],
         "tests:unit": [
             "APP_ENV=test bin/phpunit --testsuite=unit --testdox"
+        ],
+        "tests:integration": [
+            "APP_ENV=test bin/phpunit --testsuite=integration --testdox"
         ],
         "tests:functional": [
             "APP_ENV=test bin/phpunit --testsuite=functional --testdox"

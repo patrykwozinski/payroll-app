@@ -33,4 +33,9 @@ final class Payroll
     {
         return empty($this->records);
     }
+
+    public function id(): PayrollId
+    {
+        return $this->id;
+    }
 }
