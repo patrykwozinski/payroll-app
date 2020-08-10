@@ -46,13 +46,18 @@ final class Worker
         return Money::zero();
     }
 
-    public function snapshot(): WorkerSnapshot
+    public function personalData(): PersonalData
     {
-        return new WorkerSnapshot(
-            $this->id,
-            $this->personalData,
-            $this->department,
-            $this->salary
-        );
+        return $this->personalData;
+    }
+
+    public function department(): Department
+    {
+        return $this->department;
+    }
+
+    public function salary(): Money
+    {
+        return $this->salary;
     }
 }

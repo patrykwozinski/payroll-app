@@ -13,10 +13,26 @@
                 type="payroll_record_id">
             <generator strategy="NONE"/>
         </id>
+        <many-to-one field="payroll" target-entity="Payroll" inversed-by="payrollRecords">
+            <join-column name="payroll_id" />
+        </many-to-one>
+        <field
+                name="workerId"
+                column="worker_id"
+                type="worker_id">
+        </field>
         <embedded
-                name="workerSnapshot"
-                class="App\Payroll\Domain\WorkerSnapshot"
+                name="personalData"
+                class="App\Payroll\Domain\PersonalData"
                 use-column-prefix="false"
+        />
+        <many-to-one field="department" target-entity="Department" inversed-by="records">
+            <join-column name="department_id"/>
+        </many-to-one>
+        <field
+                name="salary"
+                column="salary"
+                type="money"
         />
         <field
                 name="salaryBonus"

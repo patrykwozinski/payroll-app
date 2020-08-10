@@ -39,7 +39,11 @@ final class PayrollGenerator
             $payroll->add(
                 new PayrollRecord(
                     PayrollRecordId::random(),
-                    $worker->snapshot(),
+                    $payroll,
+                    $worker->id(),
+                    $worker->personalData(),
+                    $worker->department(),
+                    $worker->salary(),
                     $salaryBonus
                 )
             );

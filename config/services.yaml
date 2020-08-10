@@ -18,6 +18,11 @@ services:
     _instanceof:
         App\Common\CQRS\CommandHandler:
             tags: [messenger.message_handler]
+        App\Common\CQRS\Query:
+            tags: [cqrs.query]
+
+    App\Common\CQRS\QueryBus:
+        $queries: !tagged_iterator cqrs.query
 
     App\Common\Calendar\Clock: '@App\Common\Calendar\Clock\SystemClock'
 

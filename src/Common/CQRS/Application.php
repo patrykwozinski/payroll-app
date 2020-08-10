@@ -6,22 +6,26 @@ namespace App\Common\CQRS;
 
 use App\Common\Calendar\Clock;
 use App\Common\CQRS\Exception\CommandException;
+use App\Common\CQRS\Exception\QueryException;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
 final class Application
 {
     private CommandBus $commandBus;
+    private QueryBus $queryBus;
     private Clock $clock;
     private LoggerInterface $logger;
 
-    public function __construct(CommandBus $commandBus, Clock $clock, LoggerInterface $logger)
+    public function __construct(CommandBus $commandBus, QueryBus $queryBus, Clock $clock, LoggerInterface $logger)
     {
         $this->commandBus = $commandBus;
+        $this->queryBus = $queryBus;
         $this->clock = $clock;
         $this->logger = $logger;
     }
 
+    /** @throws CommandException */
     public function execute(Command $command): void
     {
         try {
@@ -41,5 +45,11 @@ final class Application
 
             throw $error;
         }
+    }
+
+    /** @throws QueryException */
+    public function query(string $name): Query
+    {
+        return $this->queryBus->getQuery($name);
     }
 }
