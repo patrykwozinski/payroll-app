@@ -11,7 +11,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 final class CreateDepartmentTest extends KernelTestCase
 {
-    private Command $createDepartment;
+    private Command $command;
     private CommandTester $commandTester;
 
     protected function setUp(): void
@@ -19,14 +19,14 @@ final class CreateDepartmentTest extends KernelTestCase
         $kernel = static::bootKernel();
         $application = new Application($kernel);
 
-        $this->createDepartment = $application->find('payroll:create-department');
-        $this->commandTester = new CommandTester($this->createDepartment);
+        $this->command = $application->find('payroll:create-department');
+        $this->commandTester = new CommandTester($this->command);
     }
 
     public function testDepartmentCreated(): void
     {
         $this->commandTester->execute([
-            'command' => $this->createDepartment->getName(),
+            'command' => $this->command->getName(),
             'name' => 'IT operations',
             'bonus-type' => 'Yearly',
             'bonus-value' => 700,
